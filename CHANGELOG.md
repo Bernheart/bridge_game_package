@@ -9,3 +9,6 @@
 
 ## 1.0.2 (2024-11-20)
 - Minor improvements and bug fixes.
+
+## 1.0.3 (2024-11-20)
+- More improvements and bug fixes.

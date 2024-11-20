@@ -6,13 +6,20 @@ class MatchGame extends Game<MatchGameRecord> {
 
   int findRecordByBoardNumber(int boardNumber) {
     for (int i = 0; i < recordList.length; i++) {
-      if (recordList[i].boardNumber == boardNumber) return i;
+      if (recordList[i].boardNumber == boardNumber && !recordList[i].isEmpty) {
+        return i;
+      }
     }
     return -1;
   }
 
-  int setBoardNumber(int boardNumber) {
-    if (findRecordByBoardNumber(boardNumber + 1) == -1) return boardNumber + 1;
+  int setBoardNumber(int nextBoardNumber) {
+    if (findRecordByBoardNumber(nextBoardNumber) == -1) {
+      for (MatchGameRecord record in recordList) {
+        if (record.isEmpty && record.boardNumber > 0) return record.boardNumber;
+      }
+      return nextBoardNumber;
+    } 
     for (int i = 0; i < recordList.length; i++) {
       if (recordList[i].boardNumber == 0) {
         return recordList[i - 1].boardNumber + 1;
