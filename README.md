@@ -29,4 +29,4 @@ To get started with the `bridge` package, you need to add it to your `pubspec.ya
 
 ```yaml
 dependencies:
-  bridge: ^1.0.1
+  bridge: ^1.0.2

@@ -11,7 +11,22 @@ class MatchGame extends Game<MatchGameRecord> {
     return -1;
   }
 
+  int setBoardNumber(int boardNumber) {
+    if (findRecordByBoardNumber(boardNumber + 1) == -1) return boardNumber + 1;
+    for (int i = 0; i < recordList.length; i++) {
+      if (recordList[i].boardNumber == 0) {
+        return recordList[i - 1].boardNumber + 1;
+      }
+      if (recordList[i].isEmpty) return recordList[i].boardNumber;
+    }
+    return recordList.last.boardNumber + 1;
+  }
+
   void insertRecord(MatchGameRecord record) {
+    if (recordList.isEmpty || record.boardNumber == 0) {
+      recordList.add(record);
+      return;
+    }
     if (!recordList.last.isEmpty &&
         recordList.last.boardNumber < record.boardNumber) {
       recordList.add(record);
@@ -23,17 +38,11 @@ class MatchGame extends Game<MatchGameRecord> {
         if (recordList.last.isEmpty) recordList.removeLast();
         break;
       }
-      if (recordList[i].boardNumber < 0 ||
+      if (recordList[i].boardNumber == 0 ||
           recordList[i].boardNumber == record.boardNumber) {
         recordList[i] = record;
         break;
       }
     }
-  }
-
-  int removeRecord(int boardNumber) {
-    int index = findRecordByBoardNumber(boardNumber);
-    if (index != -1) recordList.removeAt(index);
-    return index;
   }
 }
