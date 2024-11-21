@@ -3,12 +3,6 @@
 - Added detailed documentation and examples.
 - Minor improvements and bug fixes.
 
-## 1.0.1 (2024-11-19)
+## 1.0.4 (2024-11-21)
 - Added support for empty match records
-- Changed adding records to match game
-
-## 1.0.2 (2024-11-20)
-- Minor improvements and bug fixes.
-
-## 1.0.3 (2024-11-20)
-- More improvements and bug fixes.
+- Improved adding and removing records in match game

@@ -6,7 +6,7 @@ class MatchGame extends Game<MatchGameRecord> {
 
   int findRecordByBoardNumber(int boardNumber) {
     for (int i = 0; i < recordList.length; i++) {
-      if (recordList[i].boardNumber == boardNumber && !recordList[i].isEmpty) {
+      if (recordList[i].boardNumber == boardNumber) {
         return i;
       }
     }
@@ -14,19 +14,19 @@ class MatchGame extends Game<MatchGameRecord> {
   }
 
   int setBoardNumber(int nextBoardNumber) {
-    if (findRecordByBoardNumber(nextBoardNumber) == -1) {
-      for (MatchGameRecord record in recordList) {
-        if (record.isEmpty && record.boardNumber > 0) return record.boardNumber;
+    int firstEmptyRecordBoardNumber = 0;
+    for (MatchGameRecord gameRecord in recordList) {
+      if (firstEmptyRecordBoardNumber == 0 && gameRecord.isEmpty) {
+        firstEmptyRecordBoardNumber = gameRecord.boardNumber;
       }
-      return nextBoardNumber;
-    } 
-    for (int i = 0; i < recordList.length; i++) {
-      if (recordList[i].boardNumber == 0) {
-        return recordList[i - 1].boardNumber + 1;
+      if (gameRecord.boardNumber >= nextBoardNumber && gameRecord.isEmpty) {
+        return nextBoardNumber;
       }
-      if (recordList[i].isEmpty) return recordList[i].boardNumber;
+      if (gameRecord.boardNumber == nextBoardNumber) nextBoardNumber++;
     }
-    return recordList.last.boardNumber + 1;
+    return (firstEmptyRecordBoardNumber != 0
+        ? firstEmptyRecordBoardNumber
+        : nextBoardNumber);
   }
 
   void insertRecord(MatchGameRecord record) {
@@ -51,5 +51,11 @@ class MatchGame extends Game<MatchGameRecord> {
         break;
       }
     }
+  }
+
+  int removeRecord(int boardNumber) {
+    int index = findRecordByBoardNumber(boardNumber);
+    if (index != -1) recordList.removeAt(index);
+    return index;
   }
 }
