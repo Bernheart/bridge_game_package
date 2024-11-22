@@ -204,23 +204,17 @@ class ScoreTable {
   static int calculateScorePenalty(
       Vulnerability vul, ContractType contractType, int trickDiffrence) {
     if (!contractType.isNotDoubled()) {
-      if (trickDiffrence == -1) {
-        return vul.ifVulnerable(-200, -100) *
-            (contractType == ContractType.redoubled ? 2 : 1);
-      } else if (vul.isVulnerable()) {
+      if (vul.isVulnerable()) {
         return (contractType == ContractType.redoubled)
-            ? 400 + 600 * (-trickDiffrence - 1)
-            : 200 + 300 * (-trickDiffrence - 1);
-
-        //return vul.ifVulnerable(-500, -300) *
-        //     (contractType == ContractType.redoubled ? 2 : 1);
+            ? -400 - 600 * (-trickDiffrence - 1)
+            : -200 - 300 * (-trickDiffrence - 1);
       } else {
         return (contractType == ContractType.redoubled)
-            ? 200 +
-                400 * (-trickDiffrence - 1) +
+            ? -200 -
+                400 * (-trickDiffrence - 1) -
                 200 * (max(0, -trickDiffrence - 3))
-            : 100 +
-                200 * (-trickDiffrence - 1) +
+            : -100 -
+                200 * (-trickDiffrence - 1) -
                 100 * (max(0, -trickDiffrence - 3));
       }
     }

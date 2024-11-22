@@ -20,7 +20,7 @@ class MatchGame extends Game<MatchGameRecord> {
         firstEmptyRecordBoardNumber = gameRecord.boardNumber;
       }
       if (gameRecord.boardNumber >= nextBoardNumber && gameRecord.isEmpty) {
-        return nextBoardNumber;
+        return gameRecord.boardNumber;
       }
       if (gameRecord.boardNumber == nextBoardNumber) nextBoardNumber++;
     }
