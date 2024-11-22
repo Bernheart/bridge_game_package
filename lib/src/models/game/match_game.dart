@@ -1,5 +1,4 @@
 import 'package:bridge_game/src/models/game/game.dart';
-import 'package:bridge_game/src/models/game_record/game_record.dart';
 import 'package:bridge_game/src/models/game_record/match_game_record.dart';
 
 class MatchGame extends Game<MatchGameRecord> {
