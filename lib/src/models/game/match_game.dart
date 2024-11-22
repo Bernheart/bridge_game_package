@@ -1,8 +1,16 @@
 import 'package:bridge_game/src/models/game/game.dart';
+import 'package:bridge_game/src/models/game_record/game_record.dart';
 import 'package:bridge_game/src/models/game_record/match_game_record.dart';
 
 class MatchGame extends Game<MatchGameRecord> {
-  MatchGame({super.id, super.name, super.recordList});
+  List<MatchGameRecord> secondTableRecordList;
+  List<int> boardNumbers;
+  MatchGame(
+      {super.id,
+      super.name,
+      super.recordList,
+      required this.secondTableRecordList,
+      required this.boardNumbers});
 
   int findRecordByBoardNumber(int boardNumber) {
     for (int i = 0; i < recordList.length; i++) {
@@ -57,5 +65,23 @@ class MatchGame extends Game<MatchGameRecord> {
     int index = findRecordByBoardNumber(boardNumber);
     if (index != -1) recordList.removeAt(index);
     return index;
+  }
+
+  void setSecondTableRecordList(List<MatchGameRecord> recordListSecondTable) {
+    secondTableRecordList = recordListSecondTable;
+
+    recalculateBoardNumbers();
+  }
+
+  void recalculateBoardNumbers() {
+    boardNumbers.clear();
+
+    boardNumbers.addAll(recordList.map((g) => g.boardNumber));
+    boardNumbers.addAll(
+      secondTableRecordList
+          .map((g) => g.boardNumber)
+          .where((boardNumber) => !boardNumbers.contains(boardNumber)),
+    );
+    boardNumbers.sort();
   }
 }
