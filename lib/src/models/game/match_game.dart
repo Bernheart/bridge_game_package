@@ -4,12 +4,18 @@ class MatchGame extends Game<MatchGameRecord> {
   List<MatchGameRecord> secondTableRecordList;
   List<int> boardNumbers;
   Map<Direction, String> table1 = {}, table2 = {};
+  String matchName;
+  String team1Name;
+  String team2Name;
   MatchGame(
       {super.id,
       super.name,
       super.recordList,
       required this.secondTableRecordList,
-      required this.boardNumbers});
+      required this.boardNumbers,
+      this.matchName = "",
+      this.team1Name = "",
+      this.team2Name = ""});
 
   int findRecordByBoardNumber(int boardNumber) {
     for (int i = 0; i < recordList.length; i++) {
