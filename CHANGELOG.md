@@ -7,5 +7,6 @@
 - Added support for empty match records
 - Improved adding and removing records in match game
 
-## 1.0.6 (2024-11-23)
+## 1.0.7 (2024-11-23)
 - Added support for players names in match game
+- Added Direction.fromString

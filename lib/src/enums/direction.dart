@@ -30,4 +30,30 @@ enum Direction implements Displayable {
         return 'W';
     }
   }
+
+  static Direction fromString(String direction) {
+    switch (direction) {
+      case "N":
+      case "n":
+      case "North":
+      case "north":
+        return Direction.north;
+      case "S":
+      case "s":
+      case "South":
+      case "south":
+        return Direction.south;
+      case "E":
+      case "e":
+      case "East":
+      case "east":
+        return Direction.east;
+      case "W":
+      case "w":
+      case "West":
+      case "west":
+        return Direction.west;
+    }
+    return Direction.north;
+  }
 }
