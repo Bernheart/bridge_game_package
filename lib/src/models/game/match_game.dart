@@ -1,9 +1,9 @@
-import 'package:bridge_game/src/models/game/game.dart';
-import 'package:bridge_game/src/models/game_record/match_game_record.dart';
+import 'package:bridge_game/bridge_game.dart';
 
 class MatchGame extends Game<MatchGameRecord> {
   List<MatchGameRecord> secondTableRecordList;
   List<int> boardNumbers;
+  Map<Direction, String> table1 = {}, table2 = {};
   MatchGame(
       {super.id,
       super.name,
@@ -82,5 +82,36 @@ class MatchGame extends Game<MatchGameRecord> {
           .where((boardNumber) => !boardNumbers.contains(boardNumber)),
     );
     boardNumbers.sort();
+  }
+
+  void setPlayers(bool myTable, Map<Direction, String> players) {
+    if (myTable) {
+      table1 = players;
+    } else {
+      table2 = players;
+    }
+  }
+
+  Map<Direction, String> getPlayers(bool myTable) {
+    return myTable ? table1 : table2;
+  }
+
+  String getDirectionString(bool myTable, String playerName) {
+    return ifPlayerExists(myTable, playerName)
+        ? getDirectionByPlayerName(myTable, playerName).name
+        : " ";
+  }
+
+  bool ifPlayerExists(bool myTable, String playerName) {
+    return (myTable ? table1 : table2).values.contains(playerName);
+  }
+
+  Direction getDirectionByPlayerName(bool myTable, String playerName) {
+    Map<Direction, String> map = myTable ? table1 : table2;
+    Direction d = Direction.north;
+    map.forEach((key, value) {
+      if (value == playerName) d = key;
+    });
+    return d;
   }
 }
