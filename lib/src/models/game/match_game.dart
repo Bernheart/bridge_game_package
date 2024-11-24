@@ -121,35 +121,35 @@ class MatchGame extends Game<MatchGameRecord> {
     return d;
   }
 
-  List<String> getPlayersInTeam(bool isTeam1) {
-    List<String> list = [];
+  Map<Direction, String> getPlayersInTeam(bool isTeam1) {
+    Map<Direction, String> map = {};
     if (isTeam1) {
-      list.add(table1.keys.contains(Direction.north)
+      map[Direction.north] = table1.keys.contains(Direction.north)
           ? table1[Direction.north]!
-          : "\u2014");
-      list.add(table1.keys.contains(Direction.south)
+          : "\u2014";
+      map[Direction.south] = table1.keys.contains(Direction.south)
           ? table1[Direction.south]!
-          : "\u2014");
-      list.add(table2.keys.contains(Direction.east)
+          : "\u2014";
+      map[Direction.east] = table2.keys.contains(Direction.east)
           ? table2[Direction.east]!
-          : "\u2014");
-      list.add(table2.keys.contains(Direction.west)
+          : "\u2014";
+      map[Direction.west] = table2.keys.contains(Direction.west)
           ? table2[Direction.west]!
-          : "\u2014");
+          : "\u2014";
     } else {
-      list.add(table1.keys.contains(Direction.east)
-          ? table2[Direction.east]!
-          : "\u2014");
-      list.add(table1.keys.contains(Direction.west)
-          ? table2[Direction.west]!
-          : "\u2014");
-      list.add(table2.keys.contains(Direction.north)
+      map[Direction.north] = table2.keys.contains(Direction.north)
           ? table2[Direction.north]!
-          : "\u2014");
-      list.add(table2.keys.contains(Direction.south)
+          : "\u2014";
+      map[Direction.south] = table2.keys.contains(Direction.south)
           ? table2[Direction.south]!
-          : "\u2014");
+          : "\u2014";
+      map[Direction.east] = table1.keys.contains(Direction.east)
+          ? table1[Direction.east]!
+          : "\u2014";
+      map[Direction.west] = table1.keys.contains(Direction.west)
+          ? table1[Direction.west]!
+          : "\u2014";
     }
-    return list;
+    return map;
   }
 }
