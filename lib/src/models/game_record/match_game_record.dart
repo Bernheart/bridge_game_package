@@ -21,8 +21,9 @@ class MatchGameRecord extends GameRecord {
           tricksTaken: isEmpty ? 0 : tricksTaken!,
         );
 
-  MatchGameRecord.fromGameRecord(GameRecord gameRecord)
+  MatchGameRecord.fromGameRecord(GameRecord gameRecord, int givenTableNumber)
       : isEmpty = false,
+        tableNumber = givenTableNumber,
         super(
             boardNumber: gameRecord.boardNumber,
             level: gameRecord.level,
