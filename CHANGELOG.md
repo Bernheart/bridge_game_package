@@ -15,3 +15,7 @@
 - Added support for match name in match game
 - Added support for teams name in match game
 - fixes with players names in match game
+
+## 1.0.10 (2024-11-25)
+- Added tableNumber to the MatchGameRecord
+- Added GameType enum

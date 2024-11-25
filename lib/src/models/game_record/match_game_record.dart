@@ -3,6 +3,7 @@ import 'package:bridge_game/src/enums/index.dart';
 
 class MatchGameRecord extends GameRecord {
   final bool isEmpty;
+  late final int tableNumber;
 
   MatchGameRecord({
     required this.isEmpty,
