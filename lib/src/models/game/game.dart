@@ -1,11 +1,12 @@
-import 'package:bridge_game/src/models/game_record/game_record.dart';
+import 'package:bridge_game/bridge_game.dart';
 
-abstract class Game<T extends GameRecord> {
+class Game<T extends GameRecord> {
   int? id;
   String? name;
   List<T> recordList;
+  GameType? gameType;
 
-  Game({this.id, this.name, List<T>? recordList})
+  Game({this.id, this.name, List<T>? recordList, this.gameType})
       : recordList = recordList ?? [];
 
   void addRecord(T record) {

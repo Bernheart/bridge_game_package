@@ -29,3 +29,6 @@
 
 ## 1.0.13 (2024-11-25)
 - GameType.fromGame() into factory
+
+## 1.0.14 (2024-11-25)
+- Game not abstract
