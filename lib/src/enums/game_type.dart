@@ -1,5 +1,4 @@
 import 'package:bridge_game/bridge_game.dart';
-import 'package:bridge_game/src/utils/displayable_interface.dart';
 
 enum GameType implements Displayable {
   single,
@@ -15,6 +14,16 @@ enum GameType implements Displayable {
         return 'M';
       case tournament:
         return 'T';
+    }
+  }
+
+  factory GameType.fromGame(dynamic game) {
+    if (game is SingleTableGame) {
+      return single;
+    } else if (game is MatchGame) {
+      return match;
+    } else {
+      throw ArgumentError('Unknown game type: ${game.runtimeType}');
     }
   }
 }

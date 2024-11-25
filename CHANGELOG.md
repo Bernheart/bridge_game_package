@@ -19,3 +19,13 @@
 ## 1.0.10 (2024-11-25)
 - Added tableNumber to the MatchGameRecord
 - Added GameType enum
+
+## 1.0.11 (2024-11-25)
+- updated MatchGameRecord.fromGameRecord to put table number
+
+## 1.0.12 (2024-11-25)
+- deleted name from MatchGame bc it's in Game
+- added GameType.fromGame()
+
+## 1.0.13 (2024-11-25)
+- GameType.fromGame() into factory
