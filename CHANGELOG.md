@@ -32,3 +32,6 @@
 
 ## 1.0.14 (2024-11-25)
 - Game not abstract
+
+## 1.0.15 (2024-11-25)
+- added factories to STGame and MGame from Game

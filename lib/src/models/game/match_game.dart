@@ -1,8 +1,8 @@
 import 'package:bridge_game/bridge_game.dart';
 
 class MatchGame extends Game<MatchGameRecord> {
-  List<MatchGameRecord> secondTableRecordList;
-  List<int> boardNumbers;
+  List<MatchGameRecord> secondTableRecordList = [];
+  List<int> boardNumbers = [];
   Map<Direction, String> table1 = {}, table2 = {};
   String team1Name;
   String team2Name;
@@ -10,8 +10,6 @@ class MatchGame extends Game<MatchGameRecord> {
       {super.id,
       super.name,
       super.recordList,
-      required this.secondTableRecordList,
-      required this.boardNumbers,
       this.team1Name = "",
       this.team2Name = ""});
 
@@ -149,5 +147,9 @@ class MatchGame extends Game<MatchGameRecord> {
           : "\u2014";
     }
     return map;
+  }
+
+  factory MatchGame.fromGame(Game game) {
+    return MatchGame(id: game.id, name: game.name);
   }
 }

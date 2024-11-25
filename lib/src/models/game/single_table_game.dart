@@ -50,4 +50,8 @@ class SingleTableGame extends Game<SingleTableGameRecord> {
   int getScore() {
     return scoreNS - scoreEW;
   }
+
+  factory SingleTableGame.fromGame(Game game) {
+    return SingleTableGame(id: game.id, name: game.name);
+  }
 }
