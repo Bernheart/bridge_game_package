@@ -35,3 +35,6 @@
 
 ## 1.0.15 (2024-11-25)
 - added factories to STGame and MGame from Game
+
+## 1.0.16 (2024-11-26)
+- removed pass from Suit enum

@@ -15,7 +15,7 @@ class MatchGameRecord extends GameRecord {
     int? tricksTaken,
   }) : super(
           level: isEmpty ? -1 : level!,
-          suit: isEmpty ? Suit.pass : suit!,
+          suit: isEmpty ? Suit.clubs : suit!,
           contractType: isEmpty ? ContractType.pass : contractType!,
           declarer: isEmpty ? Direction.north : declarer!,
           tricksTaken: isEmpty ? 0 : tricksTaken!,

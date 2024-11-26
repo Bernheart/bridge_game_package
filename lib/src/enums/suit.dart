@@ -6,8 +6,7 @@ enum Suit implements Displayable {
   diamonds('D'),
   hearts('H'),
   spades('S'),
-  noTrump('NT'),
-  pass('PASS');
+  noTrump('NT');
 
   // Define a field to hold the value
   final String symbol;
@@ -28,8 +27,6 @@ enum Suit implements Displayable {
         return '♣';
       case noTrump:
         return 'NT';
-      case pass:
-        return 'PASS';
     }
   }
 
@@ -43,8 +40,6 @@ enum Suit implements Displayable {
         return SuitType.major;
       case noTrump:
         return SuitType.noTrump;
-      case pass:
-        return SuitType.pass;
     }
   }
 }
