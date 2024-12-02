@@ -39,5 +39,5 @@
 ## 1.0.16 (2024-11-26)
 - removed pass from Suit enum
 
-## 1.0.17(2024-12-02)
+## 1.0.18(2024-12-02)
 - added BoardVulnerability enum
