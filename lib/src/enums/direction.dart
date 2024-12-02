@@ -56,4 +56,18 @@ enum Direction implements Displayable {
     }
     return Direction.north;
   }
+
+  static Direction fromBoardNumber(int boardNumber) {
+    boardNumber = (boardNumber - 1) % 4 + 1;
+    switch (boardNumber) {
+      case 1:
+        return Direction.north;
+      case 2:
+        return Direction.east;
+      case 3:
+        return Direction.south;
+      default:
+        return Direction.west;
+    }
+  }
 }

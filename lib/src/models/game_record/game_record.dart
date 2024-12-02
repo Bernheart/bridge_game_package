@@ -21,11 +21,11 @@ class GameRecord {
     required this.contractType,
     required this.declarer,
     required this.tricksTaken,
-  })  : vul = Vulnerability.getBoardVulnerability(boardNumber, declarer),
+  })  : vul = Vulnerability.getVulnerability(boardNumber, declarer),
         score = (contractType == ContractType.pass)
             ? 0
             : ScoreTable.getScore(
-                    Vulnerability.getBoardVulnerability(boardNumber, declarer),
+                    Vulnerability.getVulnerability(boardNumber, declarer),
                     suit,
                     contractType,
                     level,
