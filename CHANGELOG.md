@@ -41,3 +41,7 @@
 
 ## 1.0.18(2024-12-02)
 - added BoardVulnerability enum
+
+## 1.0.19(2024-12-08)
+- added Card
+- added TournamentGameRecord
