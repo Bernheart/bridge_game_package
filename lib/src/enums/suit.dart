@@ -1,45 +1,22 @@
-import 'package:bridge_game/src/utils/displayable_interface.dart';
 import 'package:bridge_game/src/enums/suit_type.dart';
 
-enum Suit implements Displayable {
-  clubs('C'),
-  diamonds('D'),
-  hearts('H'),
-  spades('S'),
-  noTrump('NT');
+enum Suit {
+  clubs('♣', 'C', SuitType.minor),
+  diamonds('♦', 'D', SuitType.minor),
+  hearts('♥', 'H', SuitType.major),
+  spades('♠', 'S', SuitType.major),
+  noTrump('NT', 'NT', SuitType.noTrump);
 
   // Define a field to hold the value
   final String symbol;
+  final String acronym;
+  final SuitType type;
 
   // Constructor to initialize the symbol
-  const Suit(this.symbol);
+  const Suit(this.symbol, this.acronym, this.type);
 
   @override
-  String display() {
-    switch (this) {
-      case spades:
-        return '♠';
-      case hearts:
-        return '♥';
-      case diamonds:
-        return '♦';
-      case clubs:
-        return '♣';
-      case noTrump:
-        return 'NT';
-    }
-  }
-
-  SuitType getType() {
-    switch (this) {
-      case diamonds:
-      case clubs:
-        return SuitType.minor;
-      case spades:
-      case hearts:
-        return SuitType.major;
-      case noTrump:
-        return SuitType.noTrump;
-    }
+  String toString() {
+    return symbol;
   }
 }

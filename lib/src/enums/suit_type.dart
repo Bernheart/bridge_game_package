@@ -1,15 +1,10 @@
 enum SuitType {
-  minor,
-  major,
-  noTrump,
-  pass;
+  minor(20),
+  major(30),
+  noTrump(30),
+  pass(0);
 
-  int pointsForTrick() {
-    switch (this) {
-      case minor:
-        return 20;
-      default:
-        return 30;
-    }
-  }
+  final int pointsForTrick;
+
+  const SuitType(this.pointsForTrick);
 }

@@ -51,7 +51,7 @@ class SingleTableGameRecord extends GameRecord {
       'board': boardNumber.toString(),
       'contract': (contractType == ContractType.pass)
           ? 'PASS'
-          : '${contractDisplay()}${tricksDisplay()} ${declarer.display()}',
+          : '${contractDisplay()}${tricksDisplay()} $declarer',
       'score': scoreDisplay(),
       'imps': addPlusBefore(impNS),
     };

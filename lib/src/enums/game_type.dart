@@ -1,21 +1,13 @@
 import 'package:bridge_game/bridge_game.dart';
 
-enum GameType implements Displayable {
-  single,
-  match,
-  tournament;
+enum GameType {
+  single('ST'),
+  match('M'),
+  tournament('T');
 
-  @override
-  String display() {
-    switch (this) {
-      case single:
-        return 'ST';
-      case match:
-        return 'M';
-      case tournament:
-        return 'T';
-    }
-  }
+  final String acronym;
+
+  const GameType(this.acronym);
 
   factory GameType.fromGame(dynamic game) {
     if (game is SingleTableGame) {

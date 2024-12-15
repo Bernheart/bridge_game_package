@@ -1,32 +1,28 @@
-import 'package:bridge_game/src/utils/displayable_interface.dart';
 import 'package:bridge_game/src/enums/suit_type.dart';
 import 'package:bridge_game/src/enums/vulnerability.dart';
 
-enum ContractType implements Displayable {
-  pass,
-  notDoubled,
-  doubled,
-  redoubled;
+enum ContractType {
+  pass('PASS', 0, 0),
+  notDoubled('', -1, 50),
+  doubled('x', 100, 300),
+  redoubled('xx', 200, 600);
+
+  final String string;
+  final int overtrickPoints;
+  final int undertrickPoints;
+
+  const ContractType(this.string, this.overtrickPoints, this.undertrickPoints);
 
   @override
-  String display() {
-    switch (this) {
-      case pass:
-        return 'PASS';
-      case notDoubled:
-        return '';
-      case doubled:
-        return 'x';
-      case redoubled:
-        return 'xx';
-    }
+  String toString() {
+    return string;
   }
 
   bool isNotDoubled() {
     return this == ContractType.notDoubled;
   }
 
-  static ContractType fromString(String s) {
+  factory ContractType.fromString(String s) {
     switch (s.toLowerCase()) {
       case 'x':
         return doubled;
@@ -37,29 +33,30 @@ enum ContractType implements Displayable {
     }
   }
 
-  int pointsPerOvertrick(SuitType suitType, Vulnerability vul) {
-    switch (this) {
-      case pass:
-        return 0;
-      case notDoubled:
-        return suitType.pointsForTrick();
-      case doubled:
-        return vul.ifVulnerable(200, 100);
-      case redoubled:
-        return vul.ifVulnerable(400, 200);
-    }
+  // int pointsPerOvertrick(SuitType suitType, Vulnerability vul) {
+  //   switch (this) {
+  //     case pass:
+  //       return 0;
+  //     case notDoubled:
+  //       return suitType.pointsForTrick;
+  //     case doubled:
+  //       return vul.ifVulnerable(200, 100);
+  //     case redoubled:
+  //       return vul.ifVulnerable(400, 200);
+  //   }
+  // }
+
+  int pointsPerOvertrick(SuitType suitType, Vulnerability vulnerability) {
+    if (this == ContractType.notDoubled) return suitType.pointsForTrick;
+    if (vulnerability == Vulnerability.vulnerable) return overtrickPoints * 2;
+    return overtrickPoints;
   }
 
-  int pointsPerUndertrick(Vulnerability vul) {
-    switch (this) {
-      case pass:
-        return 0;
-      case notDoubled:
-        return vul.ifVulnerable(100, 50);
-      case doubled:
-        return 300;
-      case redoubled:
-        return 600;
+  int pointsPerUndertrick(Vulnerability vulnerability) {
+    if (this == ContractType.notDoubled &&
+        vulnerability == Vulnerability.vulnerable) {
+      return undertrickPoints * 2; // Apply vulnerability logic
     }
+    return undertrickPoints; // For other cases, no vulnerability logic needed
   }
 }

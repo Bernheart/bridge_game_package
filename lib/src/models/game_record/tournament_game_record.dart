@@ -50,8 +50,8 @@ class TournamentGameRecord extends GameRecord {
       } else {
         return {
           'contract': contractDisplay(),
-          'declarer': declarer.display(),
-          'lead': (lead == null) ? '\u2014' : lead!.display(),
+          'declarer': declarer.toString(),
+          'lead': (lead == null) ? '\u2014' : lead.toString(),
           'tricksTaken': tricksDisplay(),
           'scoreNS': (score > 0) ? score.abs().toString() : '',
           'scoreEW': (score < 0) ? score.abs().toString() : '',

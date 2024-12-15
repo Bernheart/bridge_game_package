@@ -191,7 +191,7 @@ class ScoreTable {
   static int getScore(Vulnerability vul, Suit suit, ContractType contractType,
       int level, int trickDiffrence) {
     return trickDiffrence >= 0
-        ? findScore(vul, suit.getType(), contractType, level, trickDiffrence)
+        ? findScore(vul, suit.type, contractType, level, trickDiffrence)
         : calculateScorePenalty(vul, contractType, trickDiffrence);
   }
 

@@ -45,3 +45,12 @@
 ## 1.0.19(2024-12-08)
 - added Card
 - added TournamentGameRecord
+
+## 1.1.0(2024-12-15)
+- in enums switch -> field (for faster access)
+- static from -> factory (Not sure if its better, but looks cool)
+- display() -> toString() (now you can display using '$name' or name.toString witch means Displayable is no longer needed)
+- added CardRank ( 2...A )
+- added FileEncoding ( pbn, lin )
+- added PairDirection ( EW, NS )
+- change a few methods for more clearence

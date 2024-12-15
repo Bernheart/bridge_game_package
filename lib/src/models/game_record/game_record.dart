@@ -30,7 +30,7 @@ class GameRecord {
                     contractType,
                     level,
                     tricksTaken - (level + 6)) *
-                declarer.sideSign();
+                declarer.pairDirection.sideSign;
 
   int tricksNeeded() {
     return level + 6;
@@ -41,11 +41,11 @@ class GameRecord {
   }
 
   String display() {
-    return '$boardNumber: ${contractDisplay()} ${tricksDisplay()} ${declarer.display()} ${scoreDisplay()}';
+    return '$boardNumber: ${contractDisplay()} ${tricksDisplay()} $declarer ${scoreDisplay()}';
   }
 
   String contractDisplay() {
-    return level.toString() + suit.display() + contractType.display();
+    return '$level$suit$contractType';
   }
 
   String tricksDisplay() {
@@ -69,7 +69,7 @@ class GameRecord {
       'board': boardNumber.toString(),
       'contract': (contractType == ContractType.pass)
           ? 'PASS'
-          : '${contractDisplay()}${tricksDisplay()} ${declarer.display()}',
+          : '${contractDisplay()}${tricksDisplay()} $declarer',
       'score': scoreDisplay(),
     };
   }

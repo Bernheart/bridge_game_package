@@ -1,37 +1,32 @@
-import 'package:bridge_game/src/utils/displayable_interface.dart';
+import 'package:bridge_game/bridge_game.dart';
 
-enum Direction implements Displayable {
-  north,
-  south,
-  east,
-  west;
+enum Direction {
+  north('N'),
+  south('S'),
+  east('E'),
+  west('W');
 
-  int sideSign() {
+  final String acronym;
+
+  const Direction(this.acronym);
+
+  PairDirection get pairDirection {
     switch (this) {
-      case north:
-      case south:
-        return 1;
-      case east:
-      case west:
-        return -1;
+      case Direction.north:
+      case Direction.south:
+        return PairDirection.NS;
+      case Direction.east:
+      case Direction.west:
+        return PairDirection.EW;
     }
   }
 
   @override
-  String display() {
-    switch (this) {
-      case north:
-        return 'N';
-      case south:
-        return 'S';
-      case east:
-        return 'E';
-      case west:
-        return 'W';
-    }
+  String toString() {
+    return acronym;
   }
 
-  static Direction fromString(String direction) {
+  factory Direction.fromString(String direction) {
     switch (direction) {
       case "N":
       case "n":
@@ -57,9 +52,9 @@ enum Direction implements Displayable {
     return Direction.north;
   }
 
-  static Direction fromBoardNumber(int boardNumber) {
-    boardNumber = (boardNumber - 1) % 4 + 1;
-    switch (boardNumber) {
+  factory Direction.fromBoardNumber(int boardNumber) {
+    int boardDirectionInt = (boardNumber - 1) % 4 + 1;
+    switch (boardDirectionInt) {
       case 1:
         return Direction.north;
       case 2:
