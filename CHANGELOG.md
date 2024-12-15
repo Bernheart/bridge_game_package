@@ -54,3 +54,6 @@
 - added FileEncoding ( pbn, lin )
 - added PairDirection ( EW, NS )
 - change a few methods for more clearence
+
+## 1.1.0(2024-12-15)
+- GameType fix

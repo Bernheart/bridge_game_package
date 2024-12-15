@@ -9,6 +9,11 @@ enum GameType {
 
   const GameType(this.acronym);
 
+  @override
+  String toString() {
+    return acronym;
+  }
+
   factory GameType.fromGame(dynamic game) {
     if (game is SingleTableGame) {
       return single;
