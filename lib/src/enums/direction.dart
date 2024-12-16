@@ -2,8 +2,8 @@ import 'package:bridge_game/bridge_game.dart';
 
 enum Direction {
   north('N'),
-  south('S'),
   east('E'),
+  south('S'),
   west('W');
 
   final String acronym;

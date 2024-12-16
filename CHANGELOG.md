@@ -64,3 +64,6 @@
 
 ## 1.1.4(2024-12-16)
 - BoardVulnerability.pairDirections change to map
+
+## 1.1.5(2024-12-16)
+- fixed directions order
