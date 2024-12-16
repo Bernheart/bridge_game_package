@@ -1,6 +1,10 @@
 import 'package:bridge_game/bridge_game.dart';
 import 'dart:math';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'card.g.dart';
+
+@JsonSerializable()
 class Card {
   CardRank rank;
   Suit suit;
@@ -17,4 +21,10 @@ class Card {
   // ignore: hash_and_equals
   bool operator ==(Object other) =>
       rank == (other as Card).rank && suit == other.suit;
+
+  // From JSON
+  factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
+
+  // To JSON
+  Map<String, dynamic> toJson() => _$CardToJson(this);
 }

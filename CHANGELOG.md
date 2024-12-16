@@ -58,5 +58,9 @@
 ## 1.1.1(2024-12-15)
 - GameType fix
 
+## 1.1.3(2024-12-16)
+- Added JsonSerialization for TournamentGameRecord and Card
+- Added Score in IMPs and in MPs to TournamentGameRecord
+
 ## 1.1.4(2024-12-16)
 - BoardVulnerability.pairDirections change to map
