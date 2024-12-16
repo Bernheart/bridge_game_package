@@ -1,7 +1,11 @@
 import 'package:bridge_game/src/models/game_record/game_record.dart';
 import 'package:bridge_game/src/enums/index.dart';
 import 'package:bridge_game/src/models/card.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'tournament_game_record.g.dart';
+
+@JsonSerializable()
 class TournamentGameRecord extends GameRecord {
   final Card? lead;
   final bool isEmpty;
@@ -68,4 +72,11 @@ class TournamentGameRecord extends GameRecord {
       };
     }
   }
+
+  // From JSON
+  factory TournamentGameRecord.fromJson(Map<String, dynamic> json) =>
+      _$TournamentGameRecordFromJson(json);
+
+  // To JSON
+  Map<String, dynamic> toJson() => _$TournamentGameRecordToJson(this);
 }
