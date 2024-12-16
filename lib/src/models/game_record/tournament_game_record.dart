@@ -8,6 +8,8 @@ part 'tournament_game_record.g.dart';
 @JsonSerializable()
 class TournamentGameRecord extends GameRecord {
   final Card? lead;
+  double scoreIMP = 0;
+  double scoreMP = 0;
   final bool isEmpty;
 
   TournamentGameRecord({
