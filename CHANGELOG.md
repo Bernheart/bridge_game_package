@@ -55,5 +55,8 @@
 - added PairDirection ( EW, NS )
 - change a few methods for more clearence
 
-## 1.1.0(2024-12-15)
+## 1.1.1(2024-12-15)
 - GameType fix
+
+## 1.1.4(2024-12-16)
+- BoardVulnerability.pairDirections change to map
