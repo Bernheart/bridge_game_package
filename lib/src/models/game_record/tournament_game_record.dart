@@ -43,8 +43,7 @@ class TournamentGameRecord extends GameRecord {
 
   void update(TournamentGameRecord tg) {
     lead = tg.lead;
-    scoreIMP = tg.scoreIMP;
-    scoreMP = tg.scoreMP;
+    score = tg.score;
     isEmpty = tg.isEmpty;
     level = tg.level;
     suit = tg.suit;
