@@ -67,3 +67,6 @@
 
 ## 1.1.5(2024-12-16)
 - fixed directions order
+
+## 1.1.6(2024-12-20)
+- updating TounamentGameRecords fix

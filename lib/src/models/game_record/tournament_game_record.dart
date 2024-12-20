@@ -7,10 +7,10 @@ part 'tournament_game_record.g.dart';
 
 @JsonSerializable()
 class TournamentGameRecord extends GameRecord {
-  final Card? lead;
+  Card? lead;
   double scoreIMP = 0;
   double scoreMP = 0;
-  final bool isEmpty;
+  bool isEmpty;
 
   TournamentGameRecord({
     required this.isEmpty,
@@ -40,6 +40,18 @@ class TournamentGameRecord extends GameRecord {
             contractType: gameRecord.contractType,
             declarer: gameRecord.declarer,
             tricksTaken: gameRecord.tricksTaken);
+
+  void update(TournamentGameRecord tg) {
+    lead = tg.lead;
+    scoreIMP = tg.scoreIMP;
+    scoreMP = tg.scoreMP;
+    isEmpty = tg.isEmpty;
+    level = tg.level;
+    suit = tg.suit;
+    contractType = tg.contractType;
+    declarer = tg.declarer;
+    tricksTaken = tg.tricksTaken;
+  }
 
   @override
   Map<String, String> toMap() {
