@@ -50,6 +50,7 @@ class TournamentGameRecord extends GameRecord {
     contractType = tg.contractType;
     declarer = tg.declarer;
     tricksTaken = tg.tricksTaken;
+    isEmpty = tg.isEmpty;
   }
 
   @override
