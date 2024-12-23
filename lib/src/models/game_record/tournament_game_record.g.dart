@@ -21,14 +21,14 @@ TournamentGameRecord _$TournamentGameRecordFromJson(
           : Card.fromJson(json['lead'] as Map<String, dynamic>),
       tricksTaken: (json['tricksTaken'] as num?)?.toInt(),
     )
-      ..id = (json['id'] as num).toInt()
       ..score = (json['score'] as num).toInt()
-      ..vul = $enumDecode(_$VulnerabilityEnumMap, json['vul']);
+      ..vul = $enumDecode(_$VulnerabilityEnumMap, json['vul'])
+      ..scoreIMP = (json['scoreIMP'] as num).toDouble()
+      ..scoreMP = (json['scoreMP'] as num).toDouble();
 
 Map<String, dynamic> _$TournamentGameRecordToJson(
         TournamentGameRecord instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'boardNumber': instance.boardNumber,
       'level': instance.level,
       'suit': _$SuitEnumMap[instance.suit]!,
@@ -38,6 +38,8 @@ Map<String, dynamic> _$TournamentGameRecordToJson(
       'score': instance.score,
       'vul': _$VulnerabilityEnumMap[instance.vul]!,
       'lead': instance.lead,
+      'scoreIMP': instance.scoreIMP,
+      'scoreMP': instance.scoreMP,
       'isEmpty': instance.isEmpty,
     };
 

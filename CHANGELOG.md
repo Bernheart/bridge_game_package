@@ -73,3 +73,6 @@
 
 ## 1.1.8(2024-12-20)
 - updating TounamentGameRecords fix FIX
+
+## 1.1.9(2024-12-23)
+- Game record id removed
