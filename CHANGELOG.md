@@ -47,7 +47,7 @@
 - added TournamentGameRecord
 
 ## 1.1.0(2024-12-15)
-- in enums switch -> field (for faster access)
+- in enums switch -> field (for faster access)looks
 - static from -> factory (Not sure if its better, but looks cool)
 - display() -> toString() (now you can display using '$name' or name.toString witch means Displayable is no longer needed)
 - added CardRank ( 2...A )
@@ -78,5 +78,5 @@
 - TournamentRank enum added
 - Calculating PKL added
 
-## 1.1.10(2024-12-30)
+## 1.1.11(2024-12-30)
 - TournamentType and ScoringType enums added
