@@ -77,4 +77,6 @@
 ## 1.1.9(2024-12-30)
 - TournamentRank enum added
 - Calculating PKL added
+
+## 1.1.10(2024-12-30)
 - TournamentType and ScoringType enums added
