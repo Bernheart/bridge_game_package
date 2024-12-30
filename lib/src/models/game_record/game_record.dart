@@ -2,7 +2,6 @@ import 'package:bridge_game/src/enums/index.dart';
 import 'package:bridge_game/src/scoring/score_table.dart';
 
 class GameRecord {
-  late final int id;
   int boardNumber; // %1-16
   int level; // 1-7
   Suit suit; // NT/S/H/D/C
