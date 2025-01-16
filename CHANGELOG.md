@@ -85,6 +85,6 @@
 - Calculating CP now works for custom formulas
 - formulas for CP can contain basic arithmetic operations, keywords as: participants, typeFactor, place and min and max functions
 
-## 1.1.13(2025-01-16)
+## 1.1.14(2025-01-16)
 - Validator for CP formulas added
 - fix to how min and max functions are evaluated in CP formula evaluator
