@@ -80,3 +80,7 @@
 
 ## 1.1.11(2024-12-30)
 - TournamentType and ScoringType enums added
+
+## 1.1.12(2025-01-16)
+- Calculating CP now works for custom formulas
+- formulas for CP can contain basic arithmetic operations, keywords as: participants, typeFactor, place and min and max functions

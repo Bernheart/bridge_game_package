@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:bridge_game/src/enums/scoring_and_tournament_type.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 enum TournamentRank {
   otx_4x('OTX****', 25, 200, 100, 40, 300, 100),
@@ -80,13 +81,94 @@ List<int> calculatePKL(int numOfParticipants, int nofPlayers,
   return res;
 }
 
-List<int> calculateCP(int numOfParticipants, TournamentType type) {
+List<int> calculateCP(int numOfParticipants, TournamentType type,
+    {String formula =
+        '(participants - place + 1) * typeFactor + max(0, 5 - (place - 1) * 2)'}) {
   List<int> res = [];
-  double tournamentTypeFactor = (type == TournamentType.teams) ? 4 : 2;
+  int tournamentTypeFactor = (type == TournamentType.teams) ? 4 : 2;
+
   for (int place = 1; place <= numOfParticipants; place++) {
-    res.add(((numOfParticipants - place + 1) * tournamentTypeFactor +
+    /*res.add(((numOfParticipants - place + 1) * tournamentTypeFactor +
             max(0, 5 - (place - 1) * 2))
-        .ceil());
+        .ceil());*/
+
+    res.add(calculateValue(
+        numOfParticipants, tournamentTypeFactor, place, formula));
   }
   return res;
+}
+
+int calculateValue(
+    int participants, int typeFactor, int place, String formula) {
+  formula = formula
+      .replaceAll('participants', participants.toString())
+      .replaceAll('typeFactor', typeFactor.toString())
+      .replaceAll('place', place.toString());
+
+  if (_hasMismatchedParentheses(formula)) {
+    throw Exception('Mismatched parentheses in formula: $formula');
+  }
+
+  formula = _processMaxFunctions(formula);
+  formula = _processMinFunctions(formula);
+
+  return _evaluateExpression(formula).round();
+}
+
+bool _hasMismatchedParentheses(String formula) {
+  int count = 0;
+  for (int i = 0; i < formula.length; i++) {
+    if (formula[i] == '(') count++;
+    if (formula[i] == ')') count--;
+    if (count < 0) return true;
+  }
+  return count != 0;
+}
+
+String _processMinFunctions(String formula) {
+  //Najbardziej zajebisty regex jaki widziałem
+  final minRegex = RegExp(
+      r'min\(((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*)\s*,\s*((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*)\)');
+
+  while (minRegex.hasMatch(formula)) {
+    formula = formula.replaceAllMapped(minRegex, (match) {
+      final firstValue = _evaluateExpression(match[1]!.trim());
+      final secondValue = _evaluateExpression(match[2]!.trim());
+
+      return '(${min(firstValue, secondValue)})';
+    });
+  }
+
+  return formula;
+}
+
+String _processMaxFunctions(String formula) {
+  //Najbardziej zajebisty regex jaki widziałem
+  final maxRegex = RegExp(
+      r'max\(((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*)\s*,\s*((?:[^)(]+|\((?:[^)(]+|\([^)(]*\))*\))*)\)');
+
+  while (maxRegex.hasMatch(formula)) {
+    formula = formula.replaceAllMapped(maxRegex, (match) {
+      final firstValue = _evaluateExpression(match[1]!.trim());
+      final secondValue = _evaluateExpression(match[2]!.trim());
+
+      return '(${max(firstValue, secondValue)})';
+    });
+  }
+
+  return formula;
+}
+
+double _evaluateExpression(String expression) {
+  try {
+    // Use the math_expressions library to evaluate the expression
+    final parser = Parser();
+    final exp = parser.parse(expression);
+    final context = ContextModel();
+    final result = exp.evaluate(EvaluationType.REAL, context);
+
+    return result;
+  } catch (e) {
+    throw Exception('Error evaluating expression: $expression\n$e');
+  }
 }
