@@ -115,6 +115,13 @@ int calculateValue(
   return _evaluateExpression(formula).round();
 }
 
+int _calculate(String formula) {
+  formula = _processMaxFunctions(formula);
+  formula = _processMinFunctions(formula);
+
+  return _evaluateExpression(formula).round();
+}
+
 bool _hasMismatchedParentheses(String formula) {
   int count = 0;
   for (int i = 0; i < formula.length; i++) {
@@ -132,8 +139,8 @@ String _processMinFunctions(String formula) {
 
   while (minRegex.hasMatch(formula)) {
     formula = formula.replaceAllMapped(minRegex, (match) {
-      final firstValue = _evaluateExpression(match[1]!.trim());
-      final secondValue = _evaluateExpression(match[2]!.trim());
+      final firstValue = _calculate(match[1]!.trim());
+      final secondValue = _calculate(match[2]!.trim());
 
       return '(${min(firstValue, secondValue)})';
     });

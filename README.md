@@ -29,4 +29,4 @@ To get started with the `bridge` package, you need to add it to your `pubspec.ya
 
 ```yaml
 dependencies:
-  bridge_game: ^1.1.12
+  bridge_game: ^1.1.13
