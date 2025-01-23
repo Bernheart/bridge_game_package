@@ -92,5 +92,6 @@ class TournamentGameRecord extends GameRecord {
       _$TournamentGameRecordFromJson(json);
 
   // To JSON
+  @override
   Map<String, dynamic> toJson() => _$TournamentGameRecordToJson(this);
 }

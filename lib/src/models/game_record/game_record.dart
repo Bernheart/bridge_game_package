@@ -1,6 +1,10 @@
 import 'package:bridge_game/src/enums/index.dart';
 import 'package:bridge_game/src/scoring/score_table.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'game_record.g.dart';
+
+@JsonSerializable()
 class GameRecord {
   int boardNumber; // %1-16
   int level; // 1-7
@@ -72,4 +76,9 @@ class GameRecord {
       'score': scoreDisplay(),
     };
   }
+
+  factory GameRecord.fromJson(Map<String, dynamic> json) =>
+      _$GameRecordFromJson(json);
+
+  Map<String, dynamic> toJson() => _$GameRecordToJson(this);
 }
