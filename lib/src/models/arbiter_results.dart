@@ -6,14 +6,15 @@ import 'package:json_annotation/json_annotation.dart';
 part 'arbiter_results.g.dart';
 
 enum ArbiterResultType {
-  AA('averege'),
-  AP('aveerage plus'),
-  AM('average minus'),
-  AC('arbiter custom');
+  AA('averege', 'AA'),
+  AP('aveerage plus', 'AP'),
+  AM('average minus', 'AM'),
+  AC('arbiter custom', 'AC');
 
   final String name;
+  final String shortName;
 
-  const ArbiterResultType(this.name);
+  const ArbiterResultType(this.name, this.shortName);
 
   double getValue(ScoringType scoringType) {
     switch (scoringType) {

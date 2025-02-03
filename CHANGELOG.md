@@ -92,7 +92,10 @@
 ## 1.1.15(2025-01-23)
 - Game Record @JsonSerializable()
 
-## 1.1.16(2025-01-16)
+## 1.1.16(2025-02-03)
 - fix to some functions in CP formulas
 - Arbiter Results added
 - TournamentGameRecord now can store an arbiter result
+
+## 1.1.17(2025-02-03)
+- fix to some TournamentGameRecord.toMap() method

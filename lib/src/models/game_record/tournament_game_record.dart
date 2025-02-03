@@ -67,6 +67,16 @@ class TournamentGameRecord extends GameRecord {
           'tricksTaken': '\u2014',
           'scoreNS': '0',
           'scoreEW': '0',
+          'arbiterResultNS': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.resultType[PairDirection.NS]!.shortName,
+          'arbiterResultEW': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.resultType[PairDirection.EW]!.shortName,
+          'arbiterResultNSScore':
+              (arbiterResult == null) ? '' : arbiterResult!.NS.toString(),
+          'arbiterResultEWScore':
+              (arbiterResult == null) ? '' : arbiterResult!.EW.toString(),
         };
       } else {
         return {
@@ -76,6 +86,16 @@ class TournamentGameRecord extends GameRecord {
           'tricksTaken': tricksDisplay(),
           'scoreNS': (score > 0) ? score.abs().toString() : '',
           'scoreEW': (score < 0) ? score.abs().toString() : '',
+          'arbiterResultNS': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.resultType[PairDirection.NS]!.shortName,
+          'arbiterResultEW': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.resultType[PairDirection.EW]!.shortName,
+          'arbiterResultNSScore':
+              (arbiterResult == null) ? '' : arbiterResult!.NS.toString(),
+          'arbiterResultEWScore':
+              (arbiterResult == null) ? '' : arbiterResult!.EW.toString(),
         };
       }
     } else {
@@ -86,6 +106,16 @@ class TournamentGameRecord extends GameRecord {
         'tricksTaken': '',
         'scoreNS': '',
         'scoreEW': '',
+        'arbiterResultNS': (arbiterResult == null)
+            ? ''
+            : arbiterResult!.resultType[PairDirection.NS]!.shortName,
+        'arbiterResultEW': (arbiterResult == null)
+            ? ''
+            : arbiterResult!.resultType[PairDirection.EW]!.shortName,
+        'arbiterResultNSScore':
+            (arbiterResult == null) ? '' : arbiterResult!.NS.toString(),
+        'arbiterResultEWScore':
+            (arbiterResult == null) ? '' : arbiterResult!.EW.toString(),
       };
     }
   }
