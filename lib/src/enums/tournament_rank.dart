@@ -7,6 +7,7 @@ enum TournamentRank {
   otx_4x('OTX****', 25, 200, 100, 40, 300, 100),
   otx_3x('OTX***', 15, 150, 100, 25, 200, 100),
   otx_2x('OTX**', 10, 75, 50, 15, 100, 100),
+  // ignore: constant_identifier_names
   otx_x('OTX*', 7, 50, 50, 10, 70, 50),
   otx('OTX', 5, 0, 0, 7, 0, 0),
   rtx('RTX', 4, 0, 0, 5, 0, 0),

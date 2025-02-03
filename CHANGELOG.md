@@ -89,7 +89,10 @@
 - Validator for CP formulas added
 - fix to how min and max functions are evaluated in CP formula evaluator
 
-## 1.1.15(2025-01-16)
+## 1.1.15(2025-01-23)
+- Game Record @JsonSerializable()
+
+## 1.1.16(2025-01-16)
 - fix to some functions in CP formulas
 - Arbiter Results added
 - TournamentGameRecord now can store an arbiter result
