@@ -156,8 +156,8 @@ String _processMaxFunctions(String formula) {
 
   while (maxRegex.hasMatch(formula)) {
     formula = formula.replaceAllMapped(maxRegex, (match) {
-      final firstValue = _evaluateExpression(match[1]!.trim());
-      final secondValue = _evaluateExpression(match[2]!.trim());
+      final firstValue = _calculate(match[1]!.trim());
+      final secondValue = _calculate(match[2]!.trim());
 
       return '(${max(firstValue, secondValue)})';
     });

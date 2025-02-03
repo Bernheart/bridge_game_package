@@ -24,7 +24,11 @@ TournamentGameRecord _$TournamentGameRecordFromJson(
       ..score = (json['score'] as num).toInt()
       ..vul = $enumDecode(_$VulnerabilityEnumMap, json['vul'])
       ..scoreIMP = (json['scoreIMP'] as num).toDouble()
-      ..scoreMP = (json['scoreMP'] as num).toDouble();
+      ..scoreMP = (json['scoreMP'] as num).toDouble()
+      ..arbiterResult = json['arbiterResult'] == null
+          ? null
+          : ArbiterResult.fromJson(
+              json['arbiterResult'] as Map<String, dynamic>);
 
 Map<String, dynamic> _$TournamentGameRecordToJson(
         TournamentGameRecord instance) =>
@@ -41,6 +45,7 @@ Map<String, dynamic> _$TournamentGameRecordToJson(
       'scoreIMP': instance.scoreIMP,
       'scoreMP': instance.scoreMP,
       'isEmpty': instance.isEmpty,
+      'arbiterResult': instance.arbiterResult,
     };
 
 const _$SuitEnumMap = {
@@ -60,8 +65,8 @@ const _$ContractTypeEnumMap = {
 
 const _$DirectionEnumMap = {
   Direction.north: 'north',
-  Direction.south: 'south',
   Direction.east: 'east',
+  Direction.south: 'south',
   Direction.west: 'west',
 };
 

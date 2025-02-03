@@ -8,3 +8,4 @@ export 'game_record/single_table_game_record.dart';
 export 'game_record/tournament_game_record.dart';
 
 export 'card.dart';
+export 'arbiter_results.dart';

@@ -1,3 +1,4 @@
+import 'package:bridge_game/src/models/arbiter_results.dart';
 import 'package:bridge_game/src/models/game_record/game_record.dart';
 import 'package:bridge_game/src/enums/index.dart';
 import 'package:bridge_game/src/models/card.dart';
@@ -11,6 +12,7 @@ class TournamentGameRecord extends GameRecord {
   double scoreIMP = 0;
   double scoreMP = 0;
   bool isEmpty;
+  ArbiterResult? arbiterResult;
 
   TournamentGameRecord({
     required this.isEmpty,
@@ -51,6 +53,7 @@ class TournamentGameRecord extends GameRecord {
     declarer = tg.declarer;
     tricksTaken = tg.tricksTaken;
     isEmpty = tg.isEmpty;
+    arbiterResult = tg.arbiterResult;
   }
 
   @override
