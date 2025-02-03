@@ -52,6 +52,9 @@ class ArbiterResult {
 
   ArbiterResult(this.resultType, {this.NS = 0.5, this.EW = 0.5});
 
+  String get getName =>
+      "A${resultType[PairDirection.NS]!.shortName[1]}${resultType[PairDirection.EW]!.shortName[1]}";
+
   double? getNS(ScoringType scoringType) {
     if (resultType[PairDirection.NS] == ArbiterResultType.AC) {
       return NS!;

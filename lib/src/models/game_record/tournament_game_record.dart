@@ -57,7 +57,7 @@ class TournamentGameRecord extends GameRecord {
   }
 
   @override
-  Map<String, String> toMap() {
+  Map<String, String> toMap({ScoringType scoringType = ScoringType.MPScore}) {
     if (!isEmpty) {
       if (contractType == ContractType.pass) {
         return {
@@ -73,10 +73,12 @@ class TournamentGameRecord extends GameRecord {
           'arbiterResultEW': (arbiterResult == null)
               ? ''
               : arbiterResult!.resultType[PairDirection.EW]!.shortName,
-          'arbiterResultNSScore':
-              (arbiterResult == null) ? '' : arbiterResult!.NS.toString(),
-          'arbiterResultEWScore':
-              (arbiterResult == null) ? '' : arbiterResult!.EW.toString(),
+          'arbiterResultNSScore': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.getNS(scoringType).toString(),
+          'arbiterResultEWScore': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.getEW(scoringType).toString(),
         };
       } else {
         return {
@@ -92,10 +94,12 @@ class TournamentGameRecord extends GameRecord {
           'arbiterResultEW': (arbiterResult == null)
               ? ''
               : arbiterResult!.resultType[PairDirection.EW]!.shortName,
-          'arbiterResultNSScore':
-              (arbiterResult == null) ? '' : arbiterResult!.NS.toString(),
-          'arbiterResultEWScore':
-              (arbiterResult == null) ? '' : arbiterResult!.EW.toString(),
+          'arbiterResultNSScore': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.getNS(scoringType).toString(),
+          'arbiterResultEWScore': (arbiterResult == null)
+              ? ''
+              : arbiterResult!.getEW(scoringType).toString(),
         };
       }
     } else {
@@ -112,10 +116,12 @@ class TournamentGameRecord extends GameRecord {
         'arbiterResultEW': (arbiterResult == null)
             ? ''
             : arbiterResult!.resultType[PairDirection.EW]!.shortName,
-        'arbiterResultNSScore':
-            (arbiterResult == null) ? '' : arbiterResult!.NS.toString(),
-        'arbiterResultEWScore':
-            (arbiterResult == null) ? '' : arbiterResult!.EW.toString(),
+        'arbiterResultNSScore': (arbiterResult == null)
+            ? ''
+            : arbiterResult!.getNS(scoringType).toString(),
+        'arbiterResultEWScore': (arbiterResult == null)
+            ? ''
+            : arbiterResult!.getEW(scoringType).toString(),
       };
     }
   }

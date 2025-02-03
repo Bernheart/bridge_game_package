@@ -97,5 +97,6 @@
 - Arbiter Results added
 - TournamentGameRecord now can store an arbiter result
 
-## 1.1.17(2025-02-03)
+## 1.1.17/1.1.18(2025-02-03)
 - fix to some TournamentGameRecord.toMap() method
+- added a getter for full name od ArbiterResult
