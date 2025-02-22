@@ -62,11 +62,11 @@ class TournamentGameRecord extends GameRecord {
       if (contractType == ContractType.pass) {
         return {
           'contract': 'PASS',
-          'declarer': '\u2014',
-          'lead': '\u2014',
-          'tricksTaken': '\u2014',
-          'scoreNS': '0',
-          'scoreEW': '0',
+          'declarer': '',
+          'lead': '',
+          'tricksTaken': '',
+          'scoreNS': '',
+          'scoreEW': '',
           'arbiterResultNS': (arbiterResult == null)
               ? ''
               : arbiterResult!.resultType[PairDirection.NS]!.shortName,
@@ -84,7 +84,7 @@ class TournamentGameRecord extends GameRecord {
         return {
           'contract': contractDisplay(),
           'declarer': declarer.toString(),
-          'lead': (lead == null) ? '\u2014' : lead.toString(),
+          'lead': (lead == null) ? '' : lead.toString(),
           'tricksTaken': tricksDisplay(),
           'scoreNS': (score > 0) ? score.abs().toString() : '',
           'scoreEW': (score < 0) ? score.abs().toString() : '',

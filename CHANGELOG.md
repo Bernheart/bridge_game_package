@@ -100,3 +100,6 @@
 ## 1.1.17/1.1.18(2025-02-03)
 - fix to some TournamentGameRecord.toMap() method
 - added a getter for full name od ArbiterResult
+
+## 1.1.19(2025-02-22)
+- removed dashes
