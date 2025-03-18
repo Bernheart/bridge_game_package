@@ -1,22 +1,27 @@
+// ignore_for_file: constant_identifier_names
+
 enum TournamentType { individual, pairs, teams }
 
-// ignore: constant_identifier_names
 enum ScoringType {
-  // ignore: constant_identifier_names
-  MPPercentage('MP - Percentage'),
-  // ignore: constant_identifier_names
-  MPScore('MP - Scoring'),
-  totalIMP('IMP - total'),
-  crossIMP('IMP - Cross'),
-  averageCrossIMP('IMP - average'),
-  butler('Butler'),
-  // ignore: constant_identifier_names
-  IMP_VP('IMP - VP');
+  MPPercentage(
+      'MP - Percentage', [TournamentType.individual, TournamentType.pairs]),
+  MPScore('MP - Scoring', [TournamentType.individual, TournamentType.pairs]),
+  totalIMP('IMP - total', [TournamentType.individual, TournamentType.pairs]),
+  crossIMP('IMP - Cross', [TournamentType.individual, TournamentType.pairs]),
+  averageCrossIMP(
+      'IMP - average', [TournamentType.individual, TournamentType.pairs]),
+  butler('Butler', [TournamentType.individual, TournamentType.pairs]),
+  IMP('IMP', [TournamentType.teams]),
+  IMP_VP('IMP - VP', [TournamentType.pairs, TournamentType.teams]),
+  BAM('BAM', [TournamentType.teams]),
+  Patton('Patton', [TournamentType.teams]);
 
   final String type;
+  final List<TournamentType> tournamentTypes;
 
-  const ScoringType(this.type);
+  const ScoringType(this.type, this.tournamentTypes);
 
   @override
   String toString() => type;
+  List<TournamentType> getTournamentTypes() => tournamentTypes;
 }

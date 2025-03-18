@@ -25,6 +25,7 @@ enum ArbiterResultType {
             : (this == AP)
                 ? 60
                 : 40;
+      case ScoringType.IMP:
       case ScoringType.IMP_VP:
       case ScoringType.averageCrossIMP:
       case ScoringType.butler:
@@ -40,6 +41,8 @@ enum ArbiterResultType {
             : (this == AP)
                 ? 3
                 : -3;
+      default:
+        return 0;
     }
   }
 }
