@@ -7,7 +7,7 @@ part 'card.g.dart';
 @JsonSerializable()
 class Card {
   CardRank rank;
-  Suit suit;
+  CardSuit suit;
 
   Card({required this.rank, required this.suit});
 

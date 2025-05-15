@@ -4,6 +4,7 @@ export 'pair_direction.dart';
 export 'suit.dart';
 export 'suit_type.dart';
 export 'card_rank.dart';
+export 'card_suit.dart';
 export 'game_type.dart';
 export 'vulnerability.dart';
 export 'board_vulnerability.dart';

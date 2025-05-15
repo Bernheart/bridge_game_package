@@ -8,12 +8,12 @@ part of 'card.dart';
 
 Card _$CardFromJson(Map<String, dynamic> json) => Card(
       rank: $enumDecode(_$CardRankEnumMap, json['rank']),
-      suit: $enumDecode(_$SuitEnumMap, json['suit']),
+      suit: $enumDecode(_$CardSuitEnumMap, json['suit']),
     );
 
 Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
       'rank': _$CardRankEnumMap[instance.rank]!,
-      'suit': _$SuitEnumMap[instance.suit]!,
+      'suit': _$CardSuitEnumMap[instance.suit]!,
     };
 
 const _$CardRankEnumMap = {
@@ -32,10 +32,9 @@ const _$CardRankEnumMap = {
   CardRank.ace: 'ace',
 };
 
-const _$SuitEnumMap = {
-  Suit.clubs: 'clubs',
-  Suit.diamonds: 'diamonds',
-  Suit.hearts: 'hearts',
-  Suit.spades: 'spades',
-  Suit.noTrump: 'noTrump',
+const _$CardSuitEnumMap = {
+  CardSuit.clubs: 'clubs',
+  CardSuit.diamonds: 'diamonds',
+  CardSuit.hearts: 'hearts',
+  CardSuit.spades: 'spades',
 };
