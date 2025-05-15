@@ -25,6 +25,36 @@ class Card {
   // From JSON
   factory Card.fromJson(Map<String, dynamic> json) => _$CardFromJson(json);
 
+  factory Card.fromString(String card) {
+    if (card.length == 3) {
+      if (card[0] == '1' && card[1] == '0') {
+        card = 'T${card[2]}';
+      } else if (card[1] == '1' && card[2] == '0') {
+        card = '${card[0]}T';
+      }
+    }
+    if (card.length != 2) {
+      throw ArgumentError('Invalid card string: $card');
+    }
+    card = card.toUpperCase();
+    CardSuit suit;
+    CardRank rank;
+    try {
+      suit = CardSuit.values
+          .firstWhere((s) => s.acronym == card[0] || s.symbol == card[0]);
+      rank = CardRank.values.firstWhere((r) => r.toString() == card[1]);
+    } catch (e) {
+      try {
+        suit = CardSuit.values
+            .firstWhere((s) => s.acronym == card[1] || s.symbol == card[1]);
+        rank = CardRank.values.firstWhere((r) => r.toString() == card[0]);
+      } catch (e) {
+        throw ArgumentError('Invalid card string: $card');
+      }
+    }
+    return Card(rank: rank, suit: suit);
+  }
+
   // To JSON
   Map<String, dynamic> toJson() => _$CardToJson(this);
 }

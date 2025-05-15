@@ -107,5 +107,5 @@
 ## 1.1.20(2025-03-18)
 - added scoring types for teams
 
-## 1.1.21(2025-05-15)
+## 1.1.22(2025-05-15)
 - added CardSuit
