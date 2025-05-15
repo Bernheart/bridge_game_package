@@ -11,3 +11,4 @@ export 'board_vulnerability.dart';
 export 'file_encoding.dart';
 export 'tournament_rank.dart';
 export 'scoring_and_tournament_type.dart';
+export 'team_sitting.dart';

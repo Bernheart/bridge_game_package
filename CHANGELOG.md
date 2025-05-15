@@ -109,3 +109,6 @@
 
 ## 1.1.22(2025-05-15)
 - added CardSuit
+
+## 1.1.23(2025-05-15)
+- added TeamSitting
