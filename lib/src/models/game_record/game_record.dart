@@ -48,10 +48,17 @@ class GameRecord {
   }
 
   String contractDisplay() {
+    if (contractType == ContractType.pass) return contractType.toString();
     return '$level$suit$contractType';
   }
 
+  List<dynamic> contractElements() {
+    if (contractType == ContractType.pass) return [contractType];
+    return [level, suit, contractType];
+  }
+
   String tricksDisplay() {
+    if (contractType == ContractType.pass) return '';
     if (tricksTaken == tricksNeeded()) {
       return '=';
     } else {

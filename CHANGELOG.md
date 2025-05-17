@@ -112,3 +112,9 @@
 
 ## 1.1.23(2025-05-15)
 - added TeamSitting
+
+## 1.1.24(2025-05-16)
+- chaged displaying functions for GameRecord
+
+## 1.1.25(2025-05-17)
+- added scoreMP and scoreIMP to TournamentGameRecord constructor

@@ -14,16 +14,18 @@ class TournamentGameRecord extends GameRecord {
   bool isEmpty;
   ArbiterResult? arbiterResult;
 
-  TournamentGameRecord({
-    required this.isEmpty,
-    required super.boardNumber,
-    int? level,
-    Suit? suit,
-    ContractType? contractType,
-    Direction? declarer,
-    this.lead,
-    int? tricksTaken,
-  }) : super(
+  TournamentGameRecord(
+      {required this.isEmpty,
+      required super.boardNumber,
+      int? level,
+      Suit? suit,
+      ContractType? contractType,
+      Direction? declarer,
+      this.lead,
+      int? tricksTaken,
+      this.scoreIMP = 0,
+      this.scoreMP = 0})
+      : super(
           level: isEmpty ? -1 : level!,
           suit: isEmpty ? Suit.clubs : suit!,
           contractType: isEmpty ? ContractType.pass : contractType!,
