@@ -12,6 +12,7 @@ class TournamentGameRecord extends GameRecord {
   double scoreIMP = 0;
   double scoreMP = 0;
   bool isEmpty;
+  bool get isNotEmpty => !isEmpty;
   ArbiterResult? arbiterResult;
 
   TournamentGameRecord(

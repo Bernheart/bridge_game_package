@@ -118,3 +118,6 @@
 
 ## 1.1.25(2025-05-17)
 - added scoreMP and scoreIMP to TournamentGameRecord constructor
+
+## 1.1.26(2025-05-19)
+- added TournamentGameRecord.isNotEmpty
