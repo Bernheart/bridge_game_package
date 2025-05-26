@@ -1,14 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tournament_game_record.dart';
+part of 'match_game_record.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TournamentGameRecord _$TournamentGameRecordFromJson(
-        Map<String, dynamic> json) =>
-    TournamentGameRecord(
+MatchGameRecord _$MatchGameRecordFromJson(Map<String, dynamic> json) =>
+    MatchGameRecord(
       isEmpty: json['isEmpty'] as bool,
       boardNumber: (json['boardNumber'] as num).toInt(),
       level: (json['level'] as num?)?.toInt(),
@@ -16,22 +15,16 @@ TournamentGameRecord _$TournamentGameRecordFromJson(
       contractType:
           $enumDecodeNullable(_$ContractTypeEnumMap, json['contractType']),
       declarer: $enumDecodeNullable(_$DirectionEnumMap, json['declarer']),
-      lead: json['lead'] == null
-          ? null
-          : Card.fromJson(json['lead'] as Map<String, dynamic>),
       tricksTaken: (json['tricksTaken'] as num?)?.toInt(),
-      scoreIMP: (json['scoreIMP'] as num?)?.toDouble() ?? 0,
-      scoreMP: (json['scoreMP'] as num?)?.toDouble() ?? 0,
     )
       ..score = (json['score'] as num).toInt()
       ..vul = $enumDecode(_$VulnerabilityEnumMap, json['vul'])
-      ..arbiterResult = json['arbiterResult'] == null
+      ..lead = json['lead'] == null
           ? null
-          : ArbiterResult.fromJson(
-              json['arbiterResult'] as Map<String, dynamic>);
+          : Card.fromJson(json['lead'] as Map<String, dynamic>)
+      ..tableNumber = (json['tableNumber'] as num).toInt();
 
-Map<String, dynamic> _$TournamentGameRecordToJson(
-        TournamentGameRecord instance) =>
+Map<String, dynamic> _$MatchGameRecordToJson(MatchGameRecord instance) =>
     <String, dynamic>{
       'boardNumber': instance.boardNumber,
       'level': instance.level,
@@ -41,11 +34,9 @@ Map<String, dynamic> _$TournamentGameRecordToJson(
       'tricksTaken': instance.tricksTaken,
       'score': instance.score,
       'vul': _$VulnerabilityEnumMap[instance.vul]!,
-      'lead': instance.lead,
-      'scoreIMP': instance.scoreIMP,
-      'scoreMP': instance.scoreMP,
       'isEmpty': instance.isEmpty,
-      'arbiterResult': instance.arbiterResult,
+      'lead': instance.lead,
+      'tableNumber': instance.tableNumber,
     };
 
 const _$SuitEnumMap = {

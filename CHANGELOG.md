@@ -126,3 +126,7 @@
 - added fromString method for enums: CardRank, CardSuit, ScoringType, Suit
 - migration from using deprecated Parser to GrammarParser
 - Card.fromString now uses CardRank.fromString and CardSuit.fromString
+
+## 1.1.30(2025-05-26)
+- added TeamGameRecord
+- added Room enum

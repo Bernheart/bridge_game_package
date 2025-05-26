@@ -1,9 +1,17 @@
+import 'package:bridge_game/src/models/card.dart';
 import 'package:bridge_game/src/models/game_record/game_record.dart';
 import 'package:bridge_game/src/enums/index.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'match_game_record.g.dart';
+
+@JsonSerializable()
 class MatchGameRecord extends GameRecord {
-  final bool isEmpty;
-  late final int tableNumber;
+  bool isEmpty;
+  bool get isNotEmpty => !isEmpty;
+
+  Card? lead;
+  late int tableNumber;
 
   MatchGameRecord({
     required this.isEmpty,
@@ -35,13 +43,23 @@ class MatchGameRecord extends GameRecord {
   @override
   Map<String, String> toMap() {
     if (!isEmpty) {
-      return super.toMap();
+      Map<String, String> gameRecordMap = super.toMap();
+      gameRecordMap['lead'] = lead?.toString() ?? '';
+      return gameRecordMap;
     } else {
       return {
         'board': (boardNumber > 0) ? boardNumber.toString() : '?',
         'contract': '',
+        'lead': '',
         'score': '',
       };
     }
   }
+
+  factory MatchGameRecord.fromJson(Map<String, dynamic> json) =>
+      _$MatchGameRecordFromJson(json);
+
+  // To JSON
+  @override
+  Map<String, dynamic> toJson() => _$MatchGameRecordToJson(this);
 }
