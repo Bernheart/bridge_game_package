@@ -170,7 +170,7 @@ String _processMaxFunctions(String formula) {
 double _evaluateExpression(String expression) {
   try {
     // Use the math_expressions library to evaluate the expression
-    final parser = Parser();
+    final parser = GrammarParser();
     final exp = parser.parse(expression);
     final context = ContextModel();
     final result = exp.evaluate(EvaluationType.REAL, context);

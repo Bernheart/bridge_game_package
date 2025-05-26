@@ -40,14 +40,12 @@ class Card {
     CardSuit suit;
     CardRank rank;
     try {
-      suit = CardSuit.values
-          .firstWhere((s) => s.acronym == card[0] || s.symbol == card[0]);
-      rank = CardRank.values.firstWhere((r) => r.toString() == card[1]);
+      suit = CardSuit.fromString(card[0]);
+      rank = CardRank.fromString(card[1]);
     } catch (e) {
       try {
-        suit = CardSuit.values
-            .firstWhere((s) => s.acronym == card[1] || s.symbol == card[1]);
-        rank = CardRank.values.firstWhere((r) => r.toString() == card[0]);
+        suit = CardSuit.fromString(card[1]);
+        rank = CardRank.fromString(card[0]);
       } catch (e) {
         throw ArgumentError('Invalid card string: $card');
       }

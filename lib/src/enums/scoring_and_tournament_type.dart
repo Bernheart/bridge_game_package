@@ -21,6 +21,47 @@ enum ScoringType {
 
   const ScoringType(this.type, this.tournamentTypes);
 
+  factory ScoringType.fromString(String type) {
+    switch (type.toLowerCase()) {
+      case 'mp - percentage':
+      case 'mpp':
+        return ScoringType.MPPercentage;
+      case 'mp - scoring':
+      case 'mps':
+      case 'mp':
+        return ScoringType.MPScore;
+      case 'imp - total':
+      case 'timp':
+      case 'total_imp':
+        return ScoringType.totalIMP;
+      case 'imp - cross':
+      case 'cimp':
+      case 'cross_imp':
+        return ScoringType.crossIMP;
+      case 'imp - average':
+      case 'aimp':
+      case 'acimp':
+      case 'average_cross_imp':
+        return ScoringType.averageCrossIMP;
+      case 'butler':
+      case 'but':
+        return ScoringType.butler;
+      case 'imp':
+        return ScoringType.IMP;
+      case 'imp - vp':
+      case 'imp_vp':
+      case 'imp-vp':
+        return ScoringType.IMP_VP;
+      case 'bam':
+        return ScoringType.BAM;
+      case 'patton':
+      case 'pat':
+        return ScoringType.Patton;
+      default:
+        throw ArgumentError('Unknown scoring type: $type');
+    }
+  }
+
   @override
   String toString() => type;
   List<TournamentType> getTournamentTypes() => tournamentTypes;

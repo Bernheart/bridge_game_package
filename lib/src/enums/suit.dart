@@ -15,6 +15,32 @@ enum Suit {
   // Constructor to initialize the symbol
   const Suit(this.symbol, this.acronym, this.type);
 
+  factory Suit.fromString(String suit) {
+    switch (suit.toLowerCase()) {
+      case 'clubs':
+      case 'c':
+      case '♣':
+        return Suit.clubs;
+      case 'diamonds':
+      case 'd':
+      case '♦':
+        return Suit.diamonds;
+      case 'hearts':
+      case 'h':
+      case '♥':
+        return Suit.hearts;
+      case 'spades':
+      case 's':
+      case '♠':
+        return Suit.spades;
+      case 'no trump':
+      case 'nt':
+        return Suit.noTrump;
+      default:
+        throw ArgumentError('Unknown suit: $suit');
+    }
+  }
+
   @override
   String toString() {
     return symbol;
