@@ -51,6 +51,7 @@ enum ScoringType {
       case 'imp - vp':
       case 'imp_vp':
       case 'imp-vp':
+      case 'vp':
         return ScoringType.IMP_VP;
       case 'bam':
         return ScoringType.BAM;
