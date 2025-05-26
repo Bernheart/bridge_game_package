@@ -35,7 +35,7 @@ enum Suit {
         return Suit.spades;
       case 'no trump':
       case 'nt':
-      case 'n'
+      case 'n':
         return Suit.noTrump;
       default:
         throw ArgumentError('Unknown suit: $suit');

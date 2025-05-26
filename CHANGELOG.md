@@ -122,7 +122,7 @@
 ## 1.1.26(2025-05-19)
 - added TournamentGameRecord.isNotEmpty
 
-## 1.1.28(2025-05-26)
+## 1.1.29(2025-05-26)
 - added fromString method for enums: CardRank, CardSuit, ScoringType, Suit
 - migration from using deprecated Parser to GrammarParser
 - Card.fromString now uses CardRank.fromString and CardSuit.fromString
