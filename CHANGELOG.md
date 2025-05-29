@@ -131,8 +131,8 @@
 - added TeamGameRecord
 - added Room enum
 
-## 1.1.31(2025-05-29)
+## 1.1.32(2025-05-29)
 - added TournamentGameRecord.fromMatchGameRecord
-
+- added MatchGameRecord.fromTournamentGameRecord
 ## 1.1.33(2025-05-29)
 - small fix to TeamGameRecord.editRecord()
