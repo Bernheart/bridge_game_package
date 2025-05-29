@@ -1,6 +1,7 @@
 import 'package:bridge_game/src/models/card.dart';
 import 'package:bridge_game/src/models/game_record/game_record.dart';
 import 'package:bridge_game/src/enums/index.dart';
+import 'package:bridge_game/src/models/game_record/tournament_game_record.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'match_game_record.g.dart';
@@ -21,6 +22,7 @@ class MatchGameRecord extends GameRecord {
     ContractType? contractType,
     Direction? declarer,
     int? tricksTaken,
+    this.lead,
   }) : super(
           level: isEmpty ? -1 : level!,
           suit: isEmpty ? Suit.clubs : suit!,
@@ -39,6 +41,19 @@ class MatchGameRecord extends GameRecord {
             contractType: gameRecord.contractType,
             declarer: gameRecord.declarer,
             tricksTaken: gameRecord.tricksTaken);
+
+  factory MatchGameRecord.fromMatchGameRecord(TournamentGameRecord tgr) {
+    return MatchGameRecord(
+      isEmpty: tgr.isEmpty,
+      boardNumber: tgr.boardNumber,
+      level: tgr.level,
+      suit: tgr.suit,
+      contractType: tgr.contractType,
+      declarer: tgr.declarer,
+      tricksTaken: tgr.tricksTaken,
+      lead: tgr.lead,
+    );
+  }
 
   @override
   Map<String, String> toMap() {
