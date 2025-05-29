@@ -1,6 +1,6 @@
 name: bridge_game
 description: A package to manage and calculate bridge game logic and supporting match games
-version: 1.1.31
+version: 1.1.33
 homepage: https://github.com/Bernheart/bridge_game_package
 repository: https://github.com/Bernheart/bridge_game_package
 license: MIT

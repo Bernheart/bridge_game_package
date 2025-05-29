@@ -29,9 +29,11 @@ class TeamGameRecord {
     records[room] = record;
     if (records[Room.open]!.isNotEmpty && records[Room.closed]!.isNotEmpty) {
       scores[ScoringType.IMP] = ImpTable.getIMPs(
-          records[Room.open]!.score - records[Room.closed]!.score);
+              (records[Room.open]!.score - records[Room.closed]!.score).toInt())
+          .toDouble();
       scores[ScoringType.IMP_VP] = ImpTable.getIMPs(
-          records[Room.open]!.score - records[Room.closed]!.score);
+              (records[Room.open]!.score - records[Room.closed]!.score).toInt())
+          .toDouble();
       scores[ScoringType.BAM] =
           (records[Room.open]!.score > records[Room.closed]!.score)
               ? 2
