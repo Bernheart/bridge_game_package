@@ -2,6 +2,7 @@ import 'package:bridge_game/src/models/arbiter_results.dart';
 import 'package:bridge_game/src/models/game_record/game_record.dart';
 import 'package:bridge_game/src/enums/index.dart';
 import 'package:bridge_game/src/models/card.dart';
+import 'package:bridge_game/src/models/game_record/match_game_record.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'tournament_game_record.g.dart';
@@ -127,6 +128,19 @@ class TournamentGameRecord extends GameRecord {
             : arbiterResult!.getEW(scoringType).toString(),
       };
     }
+  }
+
+  factory TournamentGameRecord.fromMatchGameRecord(MatchGameRecord mgr) {
+    return TournamentGameRecord(
+      isEmpty: mgr.isEmpty,
+      boardNumber: mgr.boardNumber,
+      level: mgr.level,
+      suit: mgr.suit,
+      contractType: mgr.contractType,
+      declarer: mgr.declarer,
+      tricksTaken: mgr.tricksTaken,
+      lead: mgr.lead,
+    );
   }
 
   // From JSON

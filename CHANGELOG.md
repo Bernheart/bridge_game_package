@@ -130,3 +130,6 @@
 ## 1.1.30(2025-05-26)
 - added TeamGameRecord
 - added Room enum
+
+## 1.1.31(2025-05-29)
+- added TournamentGameRecord.fromMatchGameRecord
