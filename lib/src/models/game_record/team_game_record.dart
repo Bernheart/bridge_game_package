@@ -14,6 +14,17 @@ class TeamGameRecord {
 
   TeamGameRecord();
 
+  factory TeamGameRecord.fromTeamGameRecord(TeamGameRecord teamGameRecord) {
+    return TeamGameRecord()
+      ..records = {
+        Room.open: MatchGameRecord.fromMatchGameRecord(
+            teamGameRecord.records[Room.open]!),
+        Room.closed: MatchGameRecord.fromMatchGameRecord(
+            teamGameRecord.records[Room.closed]!),
+      }
+      ..scores = Map<ScoringType, double>.from(teamGameRecord.scores);
+  }
+
   TeamGameRecord.fromGameRecords({
     required MatchGameRecord open,
     required MatchGameRecord closed,

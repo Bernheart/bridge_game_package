@@ -136,3 +136,7 @@
 - added MatchGameRecord.fromTournamentGameRecord
 ## 1.1.33(2025-05-29)
 - small fix to TeamGameRecord.editRecord()
+
+## 1.1.33(2025-05-29)
+- fix to MatchGameRecord.fromMatchGameRecord()
+- added TeamGameRecord.fromTeamGameRecord()
