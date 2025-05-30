@@ -1,4 +1,4 @@
-library bridge_game;
+library;
 
 export 'src/enums/index.dart';
 export 'src/models/index.dart';

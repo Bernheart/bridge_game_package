@@ -31,7 +31,7 @@ class ImpTable {
   ];
 
   // Method to get the index based on points using binary search
-  static getIMPs(int score) {
+  static dynamic getIMPs(int score) {
     // bc points can be negative
     int scorePositive = score.abs();
 
