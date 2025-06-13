@@ -130,6 +130,26 @@ class TournamentGameRecord extends GameRecord {
     }
   }
 
+  factory TournamentGameRecord.fromTournamentGameRecord(
+      TournamentGameRecord tgr) {
+    return TournamentGameRecord(
+      isEmpty: tgr.isEmpty,
+      boardNumber: tgr.boardNumber,
+      level: tgr.level,
+      suit: tgr.suit,
+      contractType: tgr.contractType,
+      declarer: tgr.declarer,
+      tricksTaken: tgr.tricksTaken,
+      lead: tgr.lead == null
+          ? null
+          : Card(rank: tgr.lead!.rank, suit: tgr.lead!.suit),
+      scoreIMP: tgr.scoreIMP,
+      scoreMP: tgr.scoreMP,
+    )..arbiterResult = tgr.arbiterResult == null
+        ? null
+        : ArbiterResult.fromJson(tgr.arbiterResult!.toJson());
+  }
+
   factory TournamentGameRecord.fromMatchGameRecord(MatchGameRecord mgr) {
     return TournamentGameRecord(
       isEmpty: mgr.isEmpty,

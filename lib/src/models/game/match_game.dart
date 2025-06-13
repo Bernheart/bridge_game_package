@@ -43,7 +43,7 @@ class MatchGame extends Game<MatchGameRecord> {
       recordList.add(record);
       return;
     }
-    if (!recordList.last.isEmpty &&
+    if (recordList.last.isNotEmpty &&
         recordList.last.boardNumber < record.boardNumber) {
       recordList.add(record);
       return;
