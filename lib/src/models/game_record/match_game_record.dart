@@ -42,16 +42,16 @@ class MatchGameRecord extends GameRecord {
             declarer: gameRecord.declarer,
             tricksTaken: gameRecord.tricksTaken);
 
-  factory MatchGameRecord.fromMatchGameRecord(TournamentGameRecord tgr) {
+  factory MatchGameRecord.fromMatchGameRecord(MatchGameRecord mgr) {
     return MatchGameRecord(
-      isEmpty: tgr.isEmpty,
-      boardNumber: tgr.boardNumber,
-      level: tgr.level,
-      suit: tgr.suit,
-      contractType: tgr.contractType,
-      declarer: tgr.declarer,
-      tricksTaken: tgr.tricksTaken,
-      lead: tgr.lead,
+      isEmpty: mgr.isEmpty,
+      boardNumber: mgr.boardNumber,
+      level: mgr.level,
+      suit: mgr.suit,
+      contractType: mgr.contractType,
+      declarer: mgr.declarer,
+      tricksTaken: mgr.tricksTaken,
+      lead: mgr.lead,
     );
   }
 

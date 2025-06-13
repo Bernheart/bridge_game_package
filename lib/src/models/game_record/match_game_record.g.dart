@@ -16,12 +16,12 @@ MatchGameRecord _$MatchGameRecordFromJson(Map<String, dynamic> json) =>
           $enumDecodeNullable(_$ContractTypeEnumMap, json['contractType']),
       declarer: $enumDecodeNullable(_$DirectionEnumMap, json['declarer']),
       tricksTaken: (json['tricksTaken'] as num?)?.toInt(),
+      lead: json['lead'] == null
+          ? null
+          : Card.fromJson(json['lead'] as Map<String, dynamic>),
     )
       ..score = (json['score'] as num).toInt()
       ..vul = $enumDecode(_$VulnerabilityEnumMap, json['vul'])
-      ..lead = json['lead'] == null
-          ? null
-          : Card.fromJson(json['lead'] as Map<String, dynamic>)
       ..tableNumber = (json['tableNumber'] as num).toInt();
 
 Map<String, dynamic> _$MatchGameRecordToJson(MatchGameRecord instance) =>

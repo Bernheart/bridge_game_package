@@ -10,9 +10,18 @@ class TeamGameRecord {
     Room.closed: MatchGameRecord(isEmpty: true, boardNumber: 0),
   };
 
+  TeamGameRecord();
+
   Map<ScoringType, double> scores = {};
 
-  TeamGameRecord();
+  factory TeamGameRecord.fromTeamGameRecord(TeamGameRecord teamGameRecord) {
+    return TeamGameRecord.fromGameRecords(
+      open: MatchGameRecord.fromMatchGameRecord(
+          teamGameRecord.records[Room.open]!),
+      closed: MatchGameRecord.fromMatchGameRecord(
+          teamGameRecord.records[Room.closed]!),
+    )..scores = Map<ScoringType, double>.from(teamGameRecord.scores);
+  }
 
   TeamGameRecord.fromGameRecords({
     required MatchGameRecord open,
@@ -20,6 +29,11 @@ class TeamGameRecord {
   }) {
     records[Room.open] = open;
     records[Room.closed] = closed;
+    for (var scoringType in ScoringType.values) {
+      if (scoringType.tournamentTypes.contains(TournamentType.teams)) {
+        scores[scoringType] = 0.0;
+      }
+    }
   }
 
   void editRecord({
@@ -29,9 +43,11 @@ class TeamGameRecord {
     records[room] = record;
     if (records[Room.open]!.isNotEmpty && records[Room.closed]!.isNotEmpty) {
       scores[ScoringType.IMP] = ImpTable.getIMPs(
-          records[Room.open]!.score - records[Room.closed]!.score);
+              (records[Room.open]!.score - records[Room.closed]!.score).toInt())
+          .toDouble();
       scores[ScoringType.IMP_VP] = ImpTable.getIMPs(
-          records[Room.open]!.score - records[Room.closed]!.score);
+              (records[Room.open]!.score - records[Room.closed]!.score).toInt())
+          .toDouble();
       scores[ScoringType.BAM] =
           (records[Room.open]!.score > records[Room.closed]!.score)
               ? 2
@@ -45,7 +61,11 @@ class TeamGameRecord {
                   ? 0
                   : 1;
     } else {
-      scores.clear();
+      for (var scoringType in ScoringType.values) {
+        if (scoringType.tournamentTypes.contains(TournamentType.teams)) {
+          scores[scoringType] = 0.0;
+        }
+      }
     }
   }
 

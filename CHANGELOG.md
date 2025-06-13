@@ -134,3 +134,6 @@
 ## 1.1.32(2025-05-29)
 - added TournamentGameRecord.fromMatchGameRecord
 - added MatchGameRecord.fromTournamentGameRecord
+
+## 1.1.33(2025-06-13)
+- bugfixes
