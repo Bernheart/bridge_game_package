@@ -141,3 +141,6 @@
 - fix to MatchGameRecord.fromMatchGameRecord()
 - added TeamGameRecord.fromTeamGameRecord()
 - added TournamentGameRecord.fromTournamentGameRecord()
+
+## 1.1.37(2025-06-13)
+- score calculation fixed

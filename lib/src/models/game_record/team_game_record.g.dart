@@ -14,14 +14,18 @@ TeamGameRecord _$TeamGameRecordFromJson(Map<String, dynamic> json) =>
       )
       ..scores = (json['scores'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
-            $enumDecode(_$ScoringTypeEnumMap, k), (e as num).toDouble()),
+            $enumDecode(_$TeamSittingEnumMap, k),
+            (e as Map<String, dynamic>).map(
+              (k, e) => MapEntry(
+                  $enumDecode(_$ScoringTypeEnumMap, k), (e as num).toDouble()),
+            )),
       );
 
 Map<String, dynamic> _$TeamGameRecordToJson(TeamGameRecord instance) =>
     <String, dynamic>{
       'records': instance.records.map((k, e) => MapEntry(_$RoomEnumMap[k]!, e)),
-      'scores':
-          instance.scores.map((k, e) => MapEntry(_$ScoringTypeEnumMap[k]!, e)),
+      'scores': instance.scores.map((k, e) => MapEntry(_$TeamSittingEnumMap[k]!,
+          e.map((k, e) => MapEntry(_$ScoringTypeEnumMap[k]!, e)))),
     };
 
 const _$RoomEnumMap = {
@@ -40,4 +44,9 @@ const _$ScoringTypeEnumMap = {
   ScoringType.IMP_VP: 'IMP_VP',
   ScoringType.BAM: 'BAM',
   ScoringType.Patton: 'Patton',
+};
+
+const _$TeamSittingEnumMap = {
+  TeamSitting.home: 'home',
+  TeamSitting.away: 'away',
 };

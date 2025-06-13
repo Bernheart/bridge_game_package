@@ -12,7 +12,7 @@ class TeamGameRecord {
 
   TeamGameRecord();
 
-  Map<ScoringType, double> scores = {};
+  Map<TeamSitting, Map<ScoringType, double>> scores = {};
 
   factory TeamGameRecord.fromTeamGameRecord(TeamGameRecord teamGameRecord) {
     return TeamGameRecord.fromGameRecords(
@@ -20,7 +20,8 @@ class TeamGameRecord {
           teamGameRecord.records[Room.open]!),
       closed: MatchGameRecord.fromMatchGameRecord(
           teamGameRecord.records[Room.closed]!),
-    )..scores = Map<ScoringType, double>.from(teamGameRecord.scores);
+    )..scores =
+        Map<TeamSitting, Map<ScoringType, double>>.from(teamGameRecord.scores);
   }
 
   TeamGameRecord.fromGameRecords({
@@ -29,9 +30,12 @@ class TeamGameRecord {
   }) {
     records[Room.open] = open;
     records[Room.closed] = closed;
-    for (var scoringType in ScoringType.values) {
-      if (scoringType.tournamentTypes.contains(TournamentType.teams)) {
-        scores[scoringType] = 0.0;
+    for (var sitting in TeamSitting.values) {
+      scores[sitting] = {};
+      for (var scoringType in ScoringType.values) {
+        if (scoringType.tournamentTypes.contains(TournamentType.teams)) {
+          scores[sitting]![scoringType] = 0.0;
+        }
       }
     }
   }
@@ -42,28 +46,34 @@ class TeamGameRecord {
   }) {
     records[room] = record;
     if (records[Room.open]!.isNotEmpty && records[Room.closed]!.isNotEmpty) {
-      scores[ScoringType.IMP] = ImpTable.getIMPs(
+      final impScore = ImpTable.getIMPs(
               (records[Room.open]!.score - records[Room.closed]!.score).toInt())
           .toDouble();
-      scores[ScoringType.IMP_VP] = ImpTable.getIMPs(
-              (records[Room.open]!.score - records[Room.closed]!.score).toInt())
-          .toDouble();
-      scores[ScoringType.BAM] =
-          (records[Room.open]!.score > records[Room.closed]!.score)
-              ? 2
-              : (records[Room.open]!.score < records[Room.closed]!.score)
-                  ? 0
-                  : 1;
-      scores[ScoringType.Patton] =
-          (records[Room.open]!.score > records[Room.closed]!.score)
-              ? 2
-              : (records[Room.open]!.score < records[Room.closed]!.score)
-                  ? 0
-                  : 1;
+      scores[TeamSitting.home]![ScoringType.IMP] =
+          impScore > 0 ? impScore : 0.0;
+      scores[TeamSitting.home]![ScoringType.IMP_VP] =
+          impScore > 0 ? impScore : 0.0;
+      scores[TeamSitting.away]![ScoringType.IMP] =
+          impScore > 0 ? 0.0 : -impScore;
+      scores[TeamSitting.away]![ScoringType.IMP_VP] =
+          impScore > 0 ? 0.0 : -impScore;
+
+      for (var scoringType in [ScoringType.BAM, ScoringType.Patton]) {
+        double homeScore =
+            (records[Room.open]!.score > records[Room.closed]!.score)
+                ? 2
+                : (records[Room.open]!.score < records[Room.closed]!.score)
+                    ? 0
+                    : 1;
+        scores[TeamSitting.home]![scoringType] = homeScore;
+        scores[TeamSitting.away]![scoringType] = 2 - homeScore;
+      }
     } else {
-      for (var scoringType in ScoringType.values) {
-        if (scoringType.tournamentTypes.contains(TournamentType.teams)) {
-          scores[scoringType] = 0.0;
+      for (var sitting in TeamSitting.values) {
+        for (var scoringType in ScoringType.values) {
+          if (scoringType.tournamentTypes.contains(TournamentType.teams)) {
+            scores[sitting]![scoringType] = 0.0;
+          }
         }
       }
     }
