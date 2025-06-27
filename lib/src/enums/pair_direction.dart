@@ -10,6 +10,10 @@ enum PairDirection {
   final List<Direction> directions;
   final int sideSign;
 
+  /// Returns the opposite direction of the pair.
+  PairDirection get opposite =>
+      this == PairDirection.NS ? PairDirection.EW : PairDirection.NS;
+
   const PairDirection(this.acronym, this.directions, this.sideSign);
 
   @override
