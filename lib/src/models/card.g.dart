@@ -7,14 +7,14 @@ part of 'card.dart';
 // **************************************************************************
 
 Card _$CardFromJson(Map<String, dynamic> json) => Card(
-      rank: $enumDecode(_$CardRankEnumMap, json['rank']),
-      suit: $enumDecode(_$CardSuitEnumMap, json['suit']),
-    );
+  rank: $enumDecode(_$CardRankEnumMap, json['rank']),
+  suit: $enumDecode(_$CardSuitEnumMap, json['suit']),
+);
 
 Map<String, dynamic> _$CardToJson(Card instance) => <String, dynamic>{
-      'rank': _$CardRankEnumMap[instance.rank]!,
-      'suit': _$CardSuitEnumMap[instance.suit]!,
-    };
+  'rank': _$CardRankEnumMap[instance.rank]!,
+  'suit': _$CardSuitEnumMap[instance.suit]!,
+};
 
 const _$CardRankEnumMap = {
   CardRank.two: 'two',

@@ -1,12 +1,12 @@
 name: bridge_game
 description: A package to manage and calculate bridge game logic and supporting match games
-version: 1.1.37
+version: 1.1.38
 homepage: https://github.com/Bernheart/bridge_game_package
 repository: https://github.com/Bernheart/bridge_game_package
 license: MIT
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"  # Dart 3.x, which includes null safety
+  sdk: ">=3.8.0 <4.0.0"  # Dart 3.x, which includes null safety
   flutter: ">=3.0.0"     # Flutter 3.x (ensure compatibility with null safety)
 
 dependencies:

@@ -9,29 +9,35 @@ part of 'team_game_record.dart';
 TeamGameRecord _$TeamGameRecordFromJson(Map<String, dynamic> json) =>
     TeamGameRecord()
       ..records = (json['records'] as Map<String, dynamic>).map(
-        (k, e) => MapEntry($enumDecode(_$RoomEnumMap, k),
-            MatchGameRecord.fromJson(e as Map<String, dynamic>)),
+        (k, e) => MapEntry(
+          $enumDecode(_$RoomEnumMap, k),
+          MatchGameRecord.fromJson(e as Map<String, dynamic>),
+        ),
       )
       ..scores = (json['scores'] as Map<String, dynamic>).map(
         (k, e) => MapEntry(
-            $enumDecode(_$TeamSittingEnumMap, k),
-            (e as Map<String, dynamic>).map(
-              (k, e) => MapEntry(
-                  $enumDecode(_$ScoringTypeEnumMap, k), (e as num).toDouble()),
-            )),
+          $enumDecode(_$TeamSittingEnumMap, k),
+          (e as Map<String, dynamic>).map(
+            (k, e) => MapEntry(
+              $enumDecode(_$ScoringTypeEnumMap, k),
+              (e as num).toDouble(),
+            ),
+          ),
+        ),
       );
 
 Map<String, dynamic> _$TeamGameRecordToJson(TeamGameRecord instance) =>
     <String, dynamic>{
       'records': instance.records.map((k, e) => MapEntry(_$RoomEnumMap[k]!, e)),
-      'scores': instance.scores.map((k, e) => MapEntry(_$TeamSittingEnumMap[k]!,
-          e.map((k, e) => MapEntry(_$ScoringTypeEnumMap[k]!, e)))),
+      'scores': instance.scores.map(
+        (k, e) => MapEntry(
+          _$TeamSittingEnumMap[k]!,
+          e.map((k, e) => MapEntry(_$ScoringTypeEnumMap[k]!, e)),
+        ),
+      ),
     };
 
-const _$RoomEnumMap = {
-  Room.open: 'open',
-  Room.closed: 'closed',
-};
+const _$RoomEnumMap = {Room.open: 'open', Room.closed: 'closed'};
 
 const _$ScoringTypeEnumMap = {
   ScoringType.MPPercentage: 'MPPercentage',

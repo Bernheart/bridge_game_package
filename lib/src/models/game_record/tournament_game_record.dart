@@ -16,23 +16,30 @@ class TournamentGameRecord extends GameRecord {
   bool get isNotEmpty => !isEmpty;
   ArbiterResult? arbiterResult;
 
-  TournamentGameRecord(
-      {required this.isEmpty,
-      required super.boardNumber,
-      int? level,
-      Suit? suit,
-      ContractType? contractType,
-      Direction? declarer,
-      this.lead,
-      int? tricksTaken,
-      this.scoreIMP = 0,
-      this.scoreMP = 0})
-      : super(
-          level: isEmpty ? -1 : level!,
-          suit: isEmpty ? Suit.clubs : suit!,
-          contractType: isEmpty ? ContractType.pass : contractType!,
-          declarer: isEmpty ? Direction.north : declarer!,
-          tricksTaken: isEmpty ? 0 : tricksTaken!,
+  TournamentGameRecord({
+    required super.boardNumber,
+    required super.level,
+    required super.suit,
+    required super.contractType,
+    required super.declarer,
+    required super.tricksTaken,
+    this.lead,
+    this.scoreIMP = 0,
+    this.scoreMP = 0,
+  }) : isEmpty = false;
+
+  TournamentGameRecord.empty({
+    required super.boardNumber,
+  })  : isEmpty = true,
+        lead = null,
+        scoreIMP = 0,
+        scoreMP = 0,
+        super(
+          level: -1,
+          suit: Suit.clubs,
+          contractType: ContractType.pass,
+          declarer: Direction.north,
+          tricksTaken: 0,
         );
 
   TournamentGameRecord.fromGameRecord(
@@ -132,8 +139,13 @@ class TournamentGameRecord extends GameRecord {
 
   factory TournamentGameRecord.fromTournamentGameRecord(
       TournamentGameRecord tgr) {
+    if (tgr.isEmpty) {
+      return TournamentGameRecord.empty(boardNumber: tgr.boardNumber)
+        ..arbiterResult = tgr.arbiterResult == null
+            ? null
+            : ArbiterResult.fromJson(tgr.arbiterResult!.toJson());
+    }
     return TournamentGameRecord(
-      isEmpty: tgr.isEmpty,
       boardNumber: tgr.boardNumber,
       level: tgr.level,
       suit: tgr.suit,
@@ -151,8 +163,10 @@ class TournamentGameRecord extends GameRecord {
   }
 
   factory TournamentGameRecord.fromMatchGameRecord(MatchGameRecord mgr) {
+    if (mgr.isEmpty) {
+      return TournamentGameRecord.empty(boardNumber: mgr.boardNumber);
+    }
     return TournamentGameRecord(
-      isEmpty: mgr.isEmpty,
       boardNumber: mgr.boardNumber,
       level: mgr.level,
       suit: mgr.suit,

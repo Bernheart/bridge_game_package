@@ -8,18 +8,20 @@ part of 'match_game_record.dart';
 
 MatchGameRecord _$MatchGameRecordFromJson(Map<String, dynamic> json) =>
     MatchGameRecord(
-      isEmpty: json['isEmpty'] as bool,
-      boardNumber: (json['boardNumber'] as num).toInt(),
-      level: (json['level'] as num?)?.toInt(),
-      suit: $enumDecodeNullable(_$SuitEnumMap, json['suit']),
-      contractType:
-          $enumDecodeNullable(_$ContractTypeEnumMap, json['contractType']),
-      declarer: $enumDecodeNullable(_$DirectionEnumMap, json['declarer']),
-      tricksTaken: (json['tricksTaken'] as num?)?.toInt(),
-      lead: json['lead'] == null
-          ? null
-          : Card.fromJson(json['lead'] as Map<String, dynamic>),
-    )
+        isEmpty: json['isEmpty'] as bool,
+        boardNumber: (json['boardNumber'] as num).toInt(),
+        level: (json['level'] as num?)?.toInt(),
+        suit: $enumDecodeNullable(_$SuitEnumMap, json['suit']),
+        contractType: $enumDecodeNullable(
+          _$ContractTypeEnumMap,
+          json['contractType'],
+        ),
+        declarer: $enumDecodeNullable(_$DirectionEnumMap, json['declarer']),
+        tricksTaken: (json['tricksTaken'] as num?)?.toInt(),
+        lead: json['lead'] == null
+            ? null
+            : Card.fromJson(json['lead'] as Map<String, dynamic>),
+      )
       ..score = (json['score'] as num).toInt()
       ..vul = $enumDecode(_$VulnerabilityEnumMap, json['vul'])
       ..tableNumber = (json['tableNumber'] as num).toInt();

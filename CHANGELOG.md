@@ -144,3 +144,6 @@
 
 ## 1.1.37(2025-06-13)
 - score calculation fixed
+
+## 1.1.38(2026-05-31)
+- added TournamentGameRecord.empty()

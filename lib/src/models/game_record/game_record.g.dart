@@ -6,14 +6,15 @@ part of 'game_record.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GameRecord _$GameRecordFromJson(Map<String, dynamic> json) => GameRecord(
-      boardNumber: (json['boardNumber'] as num).toInt(),
-      level: (json['level'] as num).toInt(),
-      suit: $enumDecode(_$SuitEnumMap, json['suit']),
-      contractType: $enumDecode(_$ContractTypeEnumMap, json['contractType']),
-      declarer: $enumDecode(_$DirectionEnumMap, json['declarer']),
-      tricksTaken: (json['tricksTaken'] as num).toInt(),
-    )
+GameRecord _$GameRecordFromJson(Map<String, dynamic> json) =>
+    GameRecord(
+        boardNumber: (json['boardNumber'] as num).toInt(),
+        level: (json['level'] as num).toInt(),
+        suit: $enumDecode(_$SuitEnumMap, json['suit']),
+        contractType: $enumDecode(_$ContractTypeEnumMap, json['contractType']),
+        declarer: $enumDecode(_$DirectionEnumMap, json['declarer']),
+        tricksTaken: (json['tricksTaken'] as num).toInt(),
+      )
       ..score = (json['score'] as num).toInt()
       ..vul = $enumDecode(_$VulnerabilityEnumMap, json['vul']);
 
