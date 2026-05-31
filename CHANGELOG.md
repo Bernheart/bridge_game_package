@@ -145,8 +145,8 @@
 ## 1.1.37(2025-06-13)
 - score calculation fixed
 
-## 1.1.37(2025-06-27)
+## 1.1.38(2025-06-27)
 - .opposite getters for enums: TeamSitting, Room, Vulnerability, PairDirection
 
-## 1.1.38(2026-05-31)
+## 1.1.39(2026-05-31)
 - added TournamentGameRecord.empty()
