@@ -6,6 +6,8 @@ enum Room {
 
   const Room(this.name);
 
+  Room get opposite => this == Room.open ? Room.closed : Room.open;
+
   factory Room.fromString(String name) {
     switch (name.toLowerCase()) {
       case 'open':
